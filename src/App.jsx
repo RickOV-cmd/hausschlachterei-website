@@ -146,35 +146,34 @@ export default function HausschlachtereiStrassberger() {
     {
       day: 'Dienstag',
       locations: [
-        { name: 'Marktplatz, Obernkirchen', time: '08:00 bis 13:00', address: 'Marktplatz, Obernkirchen' }
-      ]
+        { name: 'Marktplatz, Obernkirchen', time: '08:00 bis 13:00', address: 'Marktplatz 5-6, 31683 Obernkirchen' }
     },
     {
       day: 'Mittwoch',
       locations: [
-        { name: 'Wochenmarkt, Bad Eilsen', time: '08:00 bis 13:00', address: 'Wochenmarkt, Bad Eilsen' },
-        { name: 'Gottschalk\'s Hof, Helpsen', time: '14:00 bis 17:00', address: 'Gottschalk\'s Hof, Helpsen' }
+        { name: 'Wochenmarkt, Bad Eilsen', time: '08:00 bis 13:00', address: 'Bückeburger Str. 4, 31707 Bad Eilsen' },
+        { name: 'Gottschalk\'s Hof, Helpsen', time: '14:00 bis 17:00', address: 'Bahnhofstraße 1, 31691 Helpsen' }
       ]
     },
     {
       day: 'Donnerstag',
       locations: [
-        { name: 'Wochenmarkt, Minden', time: '08:00 bis 13:00', address: 'Wochenmarkt, Minden' },
-        { name: 'Straßberger\'s Hof, Buchholz', time: '14:00 bis 17:00', address: 'Straßberger\'s Hof, Buchholz, Neue Straße 2' }
+        { name: 'Wochenmarkt, Minden', time: '08:00 bis 13:00', address: 'Markt, 32423 Minden' },
+        { name: 'Straßberger\'s Hof, Buchholz', time: '14:00 bis 17:00', address: 'Neue Str. 2, 31710 Buchholz' }
       ]
     },
     {
       day: 'Freitag',
       locations: [
-        { name: 'Marktplatz, Obernkirchen', time: '07:30 bis 13:00', address: 'Marktplatz, Obernkirchen' },
-        { name: 'Ovesiek\'s Hof, Meinsen', time: '14:00 bis 18:00', address: 'Ovesiek\'s Hof, Meinsen' }
+        { name: 'Marktplatz, Obernkirchen', time: '07:30 bis 13:00', address: 'Lange Str. 24, 31683 Obernkirchen' },
+        { name: 'Ovesiek\'s Hof, Meinsen', time: '14:00 bis 18:00', address: 'Meinser Str. 23, 31675 Bückeburg' }
       ]
     },
     {
       day: 'Samstag',
       locations: [
-        { name: 'Ovesiek\'s Hof, Meinsen', time: '07:30 bis 10:00', address: 'Ovesiek\'s Hof, Meinsen' },
-        { name: 'Straßberger\'s Hof, Buchholz', time: '10:30 bis 11:30', address: 'Straßberger\'s Hof, Buchholz, Neue Straße 2' }
+        { name: 'Ovesiek\'s Hof, Meinsen', time: '07:30 bis 10:00', address: 'Meinser Str. 23, 31675 Bückeburg' },
+        { name: 'Straßberger\'s Hof, Buchholz', time: '10:30 bis 11:30', address: 'Neue Str. 2, 31710 Buchholz' }
       ]
     }
   ];
@@ -190,7 +189,7 @@ export default function HausschlachtereiStrassberger() {
     },
     {
       question: 'Gibt es Bestellungen?',
-      answer: 'Gerne nach Absprache – z. B. Aufschnittplatten oder Wurstmollen.'
+      answer: 'Gerne nach Absprache – z. B. Aufschnittplatten oder Wurstmollen. Rufen Sie uns gerne an! - +49 5751 7260 '
     }
   ];
 
@@ -1905,15 +1904,14 @@ export default function HausschlachtereiStrassberger() {
               <div className="legal-section">
                 <h2 className="legal-section-title">Kontakt</h2>
                 <p className="legal-text">
-                  <strong>Telefon:</strong> [Telefonnummer einfügen]<br />
-                  <strong>E-Mail:</strong> [E-Mail einfügen]
+                  <strong>Telefon:</strong> [+49 5751 7260]<br />
                 </p>
               </div>
 
               <div className="legal-section">
                 <h2 className="legal-section-title">Vertreten durch</h2>
                 <p className="legal-text">
-                  [Name des Inhabers/Geschäftsführers einfügen]
+                  [Kai Straßberger]
                 </p>
               </div>
 
@@ -1921,7 +1919,7 @@ export default function HausschlachtereiStrassberger() {
                 <h2 className="legal-section-title">Umsatzsteuer-ID</h2>
                 <p className="legal-text">
                   Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:<br />
-                  [USt-IdNr. einfügen]
+                  [44/143/07006]
                 </p>
               </div>
 
