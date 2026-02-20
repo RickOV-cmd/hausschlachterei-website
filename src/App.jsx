@@ -2872,7 +2872,7 @@ export default function HausschlachtereiStrassberger() {
             <img 
     src="/images/verkaufswagen.jpg" 
     alt="Unser Verkaufswagen" 
-    style={{ width: '100%', height: '100%'}}
+    style={{ width: '100px', height: '200px'}}
   />
           </div>
 
