@@ -2112,7 +2112,11 @@ export default function HausschlachtereiStrassberger() {
                 <div className="product-grid">
                   <div className="product-card">
                     <div className="product-image">
-                      📷 Produktbild: Grillfleisch
+                      <img 
+  src="/images/grillfleisch.jpg" 
+  alt="Premium Grillfleisch" 
+  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+/>
                     </div>
                     <div className="product-content">
                       <div className="product-category">Grillfleisch</div>
@@ -2131,7 +2135,11 @@ export default function HausschlachtereiStrassberger() {
 
                   <div className="product-card">
                     <div className="product-image">
-                      📷 Produktbild: Bratwürste
+                      <img 
+  src="/images/bratwurst.jpg" 
+  alt="Hausgemachte Bratwürste" 
+  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+/>
                     </div>
                     <div className="product-content">
                       <div className="product-category">Würstchen & Wurst</div>
@@ -2150,7 +2158,11 @@ export default function HausschlachtereiStrassberger() {
 
                   <div className="product-card">
                     <div className="product-image">
-                      📷 Produktbild: Aufschnitt
+                      <img 
+  src="/images/aufschnitt.jpg" 
+  alt="Aufschnitt & Wurst" 
+  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+/>
                     </div>
                     <div className="product-content">
                       <div className="product-category">Wurstwaren</div>
@@ -2169,7 +2181,11 @@ export default function HausschlachtereiStrassberger() {
 
                   <div className="product-card">
                     <div className="product-image">
-                      📷 Produktbild: Suppen
+                      <img 
+  src="/images/suppen.jpg" 
+  alt="Hausgemachte Suppen" 
+  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+/>
                     </div>
                     <div className="product-content">
                       <div className="product-category">Fertiggerichte</div>
@@ -2187,7 +2203,11 @@ export default function HausschlachtereiStrassberger() {
 
                   <div className="product-card">
                     <div className="product-image">
-                      📷 Produktbild: Salate
+                     <img 
+  src="/images/salate.jpg" 
+  alt="Frische Salate" 
+  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+/>
                     </div>
                     <div className="product-content">
                       <div className="product-category">Frische Salate</div>
@@ -2205,7 +2225,11 @@ export default function HausschlachtereiStrassberger() {
 
                   <div className="product-card">
                     <div className="product-image">
-                      📷 Produktbild: Sonderangebote
+                      <img 
+  src="/images/sonderangebote.jpg" 
+  alt="Saisonale Angebote" 
+  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+/>
                     </div>
                     <div className="product-content">
                       <div className="product-category">Saisonales</div>
