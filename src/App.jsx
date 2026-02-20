@@ -147,6 +147,7 @@ export default function HausschlachtereiStrassberger() {
       day: 'Dienstag',
       locations: [
         { name: 'Marktplatz, Obernkirchen', time: '08:00 bis 13:00', address: 'Marktplatz 5-6, 31683 Obernkirchen' }
+        ]
     },
     {
       day: 'Mittwoch',
