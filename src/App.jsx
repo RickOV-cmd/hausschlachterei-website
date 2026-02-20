@@ -2293,7 +2293,7 @@ export default function HausschlachtereiStrassberger() {
          <nav className="nav-desktop">
             <ul className="nav-links">
               <li 
-                className={`nav-link automat`}
+                className="nav-link automat"
                 onClick={() => navigateToPage('automat')}
               >
                 🕐 24/7 Automat
@@ -2310,15 +2310,14 @@ export default function HausschlachtereiStrassberger() {
               >
                 Herkunft
               </li>
-              <li 
+              <li>
                 className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
                 onClick={() => scrollToSection('about')}
-              >
+              
                 Über uns
               </li>
             </ul>
           </nav>
-
           <button 
             className="mobile-menu-button"
             onClick={() => setMobileMenuOpen(true)}
