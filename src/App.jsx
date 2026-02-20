@@ -1685,8 +1685,8 @@ export default function HausschlachtereiStrassberger() {
         }
 
         .product-image {
-          width: 100%;
-          height: 250px;
+          width: 250px;
+          height: 350px;
           background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
           display: flex;
           align-items: center;
