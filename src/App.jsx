@@ -686,10 +686,21 @@ export default function HausschlachtereiStrassberger() {
 
         /* Markets Section */
         .where-to-find {
-          background: var(--color-bg-light);
-          margin: 0 -1.5rem;
-          padding: 3rem 1.5rem;
-        }
+  background: var(--color-bg-light);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 3rem 1.5rem;
+}
+
+.where-to-find > * {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
         .market-teaser {
           background: var(--color-white);
@@ -1042,11 +1053,21 @@ export default function HausschlachtereiStrassberger() {
 
         /* Origin Section */
         .origin-section {
-          background: var(--color-bg-cream);
-          margin: 0 -1.5rem;
-          padding: 3rem 1.5rem;
-        }
+  background: var(--color-bg-cream);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 3rem 1.5rem;
+}
 
+.origin-section > * {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
         .origin-content {
           max-width: 800px;
           margin: 0 auto;
