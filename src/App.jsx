@@ -1897,7 +1897,7 @@ export default function HausschlachtereiStrassberger() {
                 <p className="legal-text">
                   <strong>Hausschlachterei Straßberger</strong><br />
                   Neue Straße 2<br />
-                  31675 Bückeburg-Buchholz<br />
+                  31710 Buchholz<br />
                   Deutschland
                 </p>
               </div>
@@ -2095,7 +2095,7 @@ export default function HausschlachtereiStrassberger() {
                 </div>
                 <button 
                   className="btn btn-white"
-                  onClick={() => openGoogleMaps('Neue Straße 2, 31710 Buchholz')}
+                  onClick={() => openGoogleMaps('Neue Str. 2, 31710 Buchholz')}
                   style={{ display: 'inline-flex' }}
                 >
                   <MapPin size={20} />
@@ -2510,7 +2510,7 @@ export default function HausschlachtereiStrassberger() {
                   <button 
                     className="btn btn-white"
                     onClick={() => {
-                      openGoogleMaps('Neue Straße 2, 31710 Buchholz');
+                      openGoogleMaps('Neue Str. 2, 31710 Buchholz');
                       setShowMarketModal(false);
                     }}
                     style={{ width: '100%' }}
@@ -2543,7 +2543,7 @@ export default function HausschlachtereiStrassberger() {
             </button>
             <button 
               className="btn btn-secondary"
-              onClick={() => openGoogleMaps('Neue Straße 2, Buchholz')}
+              onClick={() => openGoogleMaps('Neue Str. 2, 31710 Buchholz')}
             >
               <MapPin size={20} />
               24/7 Fleischautomat – Route
@@ -2636,7 +2636,7 @@ export default function HausschlachtereiStrassberger() {
           </div>
           <button 
             className="btn btn-white"
-            onClick={() => openGoogleMaps('Neue Straße 2, Buchholz')}
+            onClick={() => openGoogleMaps('Neue Str. 2, 31710 Buchholz')}
           >
             <MapPin size={20} />
             Route planen
@@ -2793,7 +2793,7 @@ export default function HausschlachtereiStrassberger() {
               </div>
               <div className="day-locations">
                 <div className="location-item">
-                  <div className="location-name">Straßberger's Hof, Buchholz</div>
+                  <div className="location-name">Neue Str. 2, 31710 Buchholz</div>
                   <div className="location-time">
                     <MapPin size={16} />
                     Neue Straße 2
@@ -2803,7 +2803,7 @@ export default function HausschlachtereiStrassberger() {
                   </p>
                   <button 
                     className="btn btn-map"
-                    onClick={() => openGoogleMaps('Neue Straße 2, 31710 Buchholz')}
+                    onClick={() => openGoogleMaps('Neue Str. 2, 31710 Buchholz')}
                   >
                     <MapPin size={16} />
                     Route planen
@@ -2942,7 +2942,7 @@ export default function HausschlachtereiStrassberger() {
         
         <button 
           className="quick-action-btn primary"
-          onClick={() => openGoogleMaps('Neue Straße 2, 31710 Buchholz')}
+          onClick={() => openGoogleMaps('Neue Str. 2, 31710 Buchholz')}
         >
           <div className="quick-action-icon">
             <MapPin size={20} />
