@@ -2856,9 +2856,7 @@ export default function HausschlachtereiStrassberger() {
             </div>
           </div>
 
-          <div className="image-placeholder">
-            📷 Bildbereiche: Höfe in Gelldorf | Tiere auf der Weide | Fütterung
-          </div>
+          
         </div>
       </section>
 
@@ -2870,8 +2868,12 @@ export default function HausschlachtereiStrassberger() {
             Familienbetrieb seit 1973 – Handwerk, Regionalität und Vertrauen in jeder Wurst.
           </p>
 
-          <div className="image-placeholder">
-            📷 Bildbereiche: Team | Hof | Verkaufswagen | Produkte
+          <div className="product-image">
+            <img 
+    src="/images/verkaufswagen.jpg" 
+    alt="Unser Verkaufswagen" 
+    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+  />
           </div>
 
           <div className="about-grid">
