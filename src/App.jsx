@@ -2290,34 +2290,34 @@ export default function HausschlachtereiStrassberger() {
             <div className="logo-tagline">Seit 1973</div>
           </div>
 
-          <nav className="nav-desktop">
-  <ul className="nav-links">
-    <li 
-      className={`nav-link automat`}
-      onClick={() => navigateToPage('automat')}
-    >
-      🕐 24/7 Automat
-    </li>
-    <li 
-      className={`nav-link ${activeSection === 'hours' ? 'active' : ''}`}
-      onClick={() => scrollToSection('hours')}
-    >
-      Standorte
-    </li>
-    <li 
-      className={`nav-link ${activeSection === 'origin' ? 'active' : ''}`}
-      onClick={() => scrollToSection('origin')}
-    >
-      Herkunft
-    </li>
-    <li 
-      className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
-      onClick={() => scrollToSection('about')}
-    >
-      Über uns
-    </li>
-  </ul>
-</nav>
+         <nav className="nav-desktop">
+            <ul className="nav-links">
+              <li 
+                className={`nav-link automat`}
+                onClick={() => navigateToPage('automat')}
+              >
+                🕐 24/7 Automat
+              </li>
+              <li 
+                className={`nav-link ${activeSection === 'hours' ? 'active' : ''}`}
+                onClick={() => scrollToSection('hours')}
+              >
+                Standorte
+              </li>
+              <li 
+                className={`nav-link ${activeSection === 'origin' ? 'active' : ''}`}
+                onClick={() => scrollToSection('origin')}
+              >
+                Herkunft
+              </li>
+              <li 
+                className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
+                onClick={() => scrollToSection('about')}
+              >
+                Über uns
+              </li>
+            </ul>
+          </nav>
 
           <button 
             className="mobile-menu-button"
