@@ -508,10 +508,15 @@ export default function HausschlachtereiStrassberger() {
 
         /* Section Styles */
         section {
-          padding: 4rem 1.5rem;
-          max-width: 1400px;
-          margin: 0 auto;
-        }
+  padding: 4rem 1.5rem;
+  width: 100%;
+}
+
+.section-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
 
         section:first-of-type {
           margin-top: 70px;
@@ -687,13 +692,8 @@ export default function HausschlachtereiStrassberger() {
         /* Markets Section */
         .where-to-find {
   background: var(--color-bg-light);
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  padding: 3rem 1.5rem;
+  padding: 3rem 0;
+  margin: 0;
 }
 
         .market-teaser {
@@ -789,14 +789,12 @@ export default function HausschlachtereiStrassberger() {
 
         /* FAQ Section */
         .faq-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 1rem;
-          margin-top: 2rem;
-          max-width: 800px;
-          margin-left: auto;
-          margin-right: auto;
-        }
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+}
 
         .faq-item {
           background: var(--color-white);
@@ -853,16 +851,14 @@ export default function HausschlachtereiStrassberger() {
 
         /* Opening Hours Section */
         .market-tabs {
-          display: flex;
-          gap: 0.5rem;
-          margin-bottom: 2rem;
-          padding: 0.5rem;
-          background: var(--color-bg-light);
-          border-radius: 12px;
-          max-width: 500px;
-          margin-left: auto;
-          margin-right: auto;
-        }
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  background: var(--color-bg-light);
+  border-radius: 12px;
+  width: 100%;
+}
 
         .market-tab {
           flex: 1;
@@ -1048,19 +1044,8 @@ export default function HausschlachtereiStrassberger() {
         /* Origin Section */
         .origin-section {
   background: var(--color-bg-cream);
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  padding: 3rem 1.5rem;
-}
-
-        .origin-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
+  padding: 3rem 0;
+  margin: 0;
 }
 
         .origin-list {
@@ -1111,12 +1096,6 @@ export default function HausschlachtereiStrassberger() {
         }
 
         /* About Section */
-        .about-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
-
         .about-grid {
           display: grid;
           grid-template-columns: 1fr;
@@ -2599,7 +2578,8 @@ export default function HausschlachtereiStrassberger() {
 
       {/* Where to Find Us */}
       <div className="where-to-find">
-        <h2 className="section-title">Wo Sie uns finden</h2>
+  <div className="section-content">
+    <h2 className="section-title">Wo Sie uns finden</h2>
         <p className="section-subtitle">
           Sie finden uns auf den Wochenmärkten sowie jederzeit an unserem 24/7 Automaten auf dem Hof in Buchholz.
         </p>
@@ -2677,6 +2657,7 @@ export default function HausschlachtereiStrassberger() {
       {/* Origin Teaser */}
       <section>
         <div className="content-section">
+           <div className="section-content">
           <h3 className="content-title">Herkunft, die wir kennen</h3>
           <p className="content-text">
             Unsere Schweine stammen ausschließlich von den Höfen Pohl und Eggelmann in Gelldorf. Die sehr kurzen Transportwege bedeuten weniger Stress für die Tiere und bessere Fleischqualität für Sie. Durch die Fütterung mit selbst angebautem Getreide und einer angepassten Aufzucht erreichen wir ein langsameres Wachstum – das Fleisch wird dadurch fester und aromatischer.
@@ -2717,6 +2698,7 @@ export default function HausschlachtereiStrassberger() {
 
       {/* Opening Hours Section */}
       <section id="hours" className="origin-section">
+        <div className="section-content">
         <h2 className="section-title">Öffnungszeiten & Standorte</h2>
         <p className="section-subtitle">
           Besuchen Sie uns auf einem unserer Wochenmärkte oder nutzen Sie unseren 24/7 Fleischautomaten für spontanen Einkauf.
@@ -2875,6 +2857,7 @@ export default function HausschlachtereiStrassberger() {
 
       {/* About Section */}
       <section id="about" className="origin-section">
+        <div className="section-content">
         <div className="about-content">
           <h2 className="section-title">Über uns</h2>
           <p className="section-subtitle">
