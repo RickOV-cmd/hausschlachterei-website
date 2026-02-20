@@ -696,12 +696,6 @@ export default function HausschlachtereiStrassberger() {
   padding: 3rem 1.5rem;
 }
 
-.where-to-find > * {
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
         .market-teaser {
           background: var(--color-white);
           padding: 1.5rem;
@@ -1063,15 +1057,11 @@ export default function HausschlachtereiStrassberger() {
   padding: 3rem 1.5rem;
 }
 
-.origin-section > * {
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-}
         .origin-content {
-          max-width: 800px;
-          margin: 0 auto;
-        }
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
 
         .origin-list {
           list-style: none;
@@ -1122,9 +1112,10 @@ export default function HausschlachtereiStrassberger() {
 
         /* About Section */
         .about-content {
-          max-width: 800px;
-          margin: 0 auto;
-        }
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
 
         .about-grid {
           display: grid;
@@ -2613,7 +2604,7 @@ export default function HausschlachtereiStrassberger() {
           Sie finden uns auf den Wochenmärkten sowie jederzeit an unserem 24/7 Automaten auf dem Hof in Buchholz.
         </p>
 
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div className="market-teaser">
             <div className="market-day">Dienstag</div>
             <div className="market-location">Marktplatz, Obernkirchen • 08:00 bis 13:00</div>
