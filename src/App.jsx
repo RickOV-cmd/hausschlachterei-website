@@ -2310,10 +2310,10 @@ export default function HausschlachtereiStrassberger() {
               >
                 Herkunft
               </li>
-              <li>
+              <li 
                 className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
                 onClick={() => scrollToSection('about')}
-              
+              >
                 Über uns
               </li>
             </ul>
@@ -2365,7 +2365,7 @@ export default function HausschlachtereiStrassberger() {
             <X size={28} color="var(--color-gray)" />
           </button>
         </div>
-        <ul className="mobile-nav-links">
+      <ul className="mobile-nav-links">
           <li 
             className={`mobile-nav-link ${activeSection === 'home' ? 'active' : ''}`}
             onClick={() => scrollToSection('home')}
