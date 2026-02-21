@@ -2562,7 +2562,7 @@ export default function HausschlachtereiStrassberger() {
               <div className="feature-icon">
                 <MapPin size={28} />
               </div>
-              <h3 className="feature-title">Regionale Höfe aus Schaumburg</h3>
+              <h3 className="feature-title">Regionaler Hof aus Schaumburg</h3>
               <p className="feature-text">Kurze Wege von bekannten lokalen Höfen</p>
             </div>
 
@@ -2589,7 +2589,7 @@ export default function HausschlachtereiStrassberger() {
       <div className="where-to-find">
         <h2 className="section-title">Wo Sie uns finden</h2>
         <p className="section-subtitle">
-          Sie finden uns auf den Wochenmärkten sowie jederzeit an unserem 24/7 Automaten auf dem Hof in Buchholz.
+          Sie finden uns auf den Wochenmärkten sowie jederzeit an unserem 24/7 Automaten auf dem Hof in Buchholz, Neue Straße 2.
         </p>
 
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
@@ -2607,6 +2607,19 @@ export default function HausschlachtereiStrassberger() {
           <div className="market-teaser">
             <div className="market-day">Donnerstag</div>
             <div className="market-location">Wochenmarkt, Minden • 08:00 bis 13:00</div>
+            <div className="market-location">Straßberger's Hof, Buchholz • 14:00 bis 17:00</div>
+          </div>
+
+          <div className="market-teaser">
+            <div className="market-day">Freitag</div>
+            <div className="market-location">Marktplatz, Obernkirchen • 07:30 bis 13:00</div>
+            <div className="market-location">Ovesiek's Hof, Meinsen • 14:00 bis 18:00</div>
+          </div>
+
+          <div className="market-teaser">
+            <div className="market-day">Samstag</div>
+            <div className="market-location">Ovesiek's Hof, Meinsen • 07:00 bis 10:00</div>
+            <div className="market-location">Straßberger's Hof, Buchholz • 10:30 bis 11:30</div>
           </div>
 
           <button 
@@ -2886,14 +2899,14 @@ export default function HausschlachtereiStrassberger() {
             <div className="about-item">
               <div className="about-item-title">Höchste Standards & EU-Zulassung</div>
               <div className="about-item-text">
-                Wir erfüllen alle Hygiene- und Sicherheitsvorschriften und verfügen über die EU-Zulassung. Als einer der wenigen Betriebe in Schaumburg dürfen wir noch regelmäßig selbst schlachten – ein Privileg, das wir mit großer Verantwortung ausüben.
+                Wir erfüllen alle Hygiene- und Sicherheitsvorschriften und verfügen über die EU-Zulassung. Als einer der wenigen Betriebe in Schaumburg dürfen wir noch selbst schlachten – ein Privileg, das wir mit großer Verantwortung ausüben.
               </div>
             </div>
 
             <div className="about-item">
               <div className="about-item-title">Handarbeit nach alter Tradition</div>
               <div className="about-item-text">
-                Von der Zerlegung bis zur Wurstherstellung – alles passiert bei uns von Hand. Wir verwenden bewährte Rezepturen und natürliche Gewürze. Unser Team von vier Mitarbeitenden sorgt dafür, dass jedes Produkt mit Sorgfalt entsteht.
+                Von der Zerlegung bis zur Wurstherstellung – alles passiert bei uns von Hand. Wir verwenden bewährte Rezepturen und natürliche Gewürze. Unser Team sorgt dafür, dass jedes Produkt mit Sorgfalt entsteht.
               </div>
             </div>
 
