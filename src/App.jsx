@@ -1107,9 +1107,10 @@ export default function HausschlachtereiStrassberger() {
 
         /* About Section */
         .about-content {
-          max-width: 800px;
-          margin: 0 auto;
-        }
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
 
         .about-grid {
           display: grid;
@@ -2724,7 +2725,8 @@ export default function HausschlachtereiStrassberger() {
 
       {/* Opening Hours Section */}
       <section id="hours" className="origin-section">
-        <h2 className="section-title">Öffnungszeiten & Standorte</h2>
+  <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+    <h2 className="section-title">Öffnungszeiten & Standorte</h2>
         <p className="section-subtitle">
           Besuchen Sie uns auf einem unserer Wochenmärkte oder nutzen Sie unseren 24/7 Fleischautomaten für spontanen Einkauf.
         </p>
@@ -2830,6 +2832,7 @@ export default function HausschlachtereiStrassberger() {
               </div>
             </div>
           )}
+        </div>
         </div>
       </section>
 
