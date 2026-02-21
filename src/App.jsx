@@ -2340,14 +2340,15 @@ export default function HausschlachtereiStrassberger() {
       {currentPage === 'main' && (
       <>
       {/* Header */}
-      <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer' }}>
+      <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: 'auto' }}>
   <img 
     src="/images/logo.jpg" 
     alt="Hausschlachterei Straßberger" 
     style={{ 
       height: '45px',
       width: 'auto',
-      display: 'block'
+      display: 'block',
+      objectFit: 'contain'
     }}
   />
   <div className="logo-tagline" style={{ marginTop: '0.2rem' }}>Seit 1973</div>
@@ -2397,18 +2398,19 @@ export default function HausschlachtereiStrassberger() {
       />
       <div className={`mobile-nav ${mobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-nav-header">
-  <div className="logo">
-    <img 
-      src="/images/logo.jpg" 
-      alt="Hausschlachterei Straßberger" 
-      style={{ 
-        height: '45px',
-        width: 'auto',
-        display: 'block'
-      }}
-    />
-    <div className="logo-tagline" style={{ marginTop: '0.2rem' }}>Seit 1973</div>
-  </div>
+  <div className="logo" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: 'auto' }}>
+  <img 
+    src="/images/logo.jpg" 
+    alt="Hausschlachterei Straßberger" 
+    style={{ 
+      height: '45px',
+      width: 'auto',
+      display: 'block',
+      objectFit: 'contain'
+    }}
+  />
+  <div className="logo-tagline" style={{ marginTop: '0.2rem' }}>Seit 1973</div>
+</div>
           <button 
             onClick={() => setMobileMenuOpen(false)}
             style={{ 
