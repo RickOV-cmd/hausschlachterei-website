@@ -1046,6 +1046,12 @@ export default function HausschlachtereiStrassberger() {
           margin: 0 -1.5rem;
           padding: 3rem 1.5rem;
         }
+        
+.origin-section > * {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
         .origin-content {
           max-width: 800px;
