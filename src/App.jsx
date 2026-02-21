@@ -230,14 +230,15 @@ export default function HausschlachtereiStrassberger() {
 
         /* Header Styles */
         .header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 1000;
-          transition: all 0.3s ease;
-          background: var(--color-white);
-        }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background: var(--color-white);
+  width: 100% !important;
+}
 
         .header.scrolled {
           box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
@@ -246,11 +247,13 @@ export default function HausschlachtereiStrassberger() {
        .header-container {
   max-width: 1400px !important;
   margin: 0 auto !important;
-  padding: 1.2rem 3rem !important;
+  padding: 1.2rem 0 !important;
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  width: 100% !important;
+  width: calc(100% - 6rem) !important;
+  margin-left: 3rem !important;
+  margin-right: 3rem !important;
   box-sizing: border-box !important;
 }
 
