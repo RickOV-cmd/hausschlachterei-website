@@ -1908,11 +1908,17 @@ export default function HausschlachtereiStrassberger() {
         <>
           <header className={`header ${scrolled ? 'scrolled' : ''}`}>
             <div className="header-container">
-              <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer' }}>
-  <div className="logo-name">
-    <span>Hausschlachterei</span>
-    <span>Straßberger</span>
-  </div>
+              <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+  <img 
+    src="/images/logo.jpg" 
+    alt="Hausschlachterei Straßberger" 
+    style={{ 
+      height: '45px',
+      width: 'auto',
+      display: 'block',
+      marginBottom: '0.15rem'
+    }}
+  />
   <div className="logo-tagline">Seit 1973</div>
 </div>
             </div>
@@ -2371,11 +2377,17 @@ export default function HausschlachtereiStrassberger() {
       />
       <div className={`mobile-nav ${mobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-nav-header">
-  <div className="logo">
-  <div className="logo-name">
-    <span>Hausschlachterei</span>
-    <span>Straßberger</span>
-  </div>
+  <div className="logo" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+  <img 
+    src="/images/logo.jpg" 
+    alt="Hausschlachterei Straßberger" 
+    style={{ 
+      height: '45px',
+      width: 'auto',
+      display: 'block',
+      marginBottom: '0.15rem'
+    }}
+  />
   <div className="logo-tagline">Seit 1973</div>
 </div>
           <button 
@@ -2962,10 +2974,18 @@ export default function HausschlachtereiStrassberger() {
       {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
-          <div className="footer-logo">
-  <span>Hausschlachterei </span>
-  <span>Straßberger</span>
-</div>
+         <img 
+  src="/images/logo.jpg" 
+  alt="Hausschlachterei Straßberger" 
+  style={{ 
+    height: '50px',
+    width: 'auto',
+    marginBottom: '0.5rem',
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  }}
+/>
           <div className="footer-tagline">WISSEN, WO'S HERKOMMT – SEIT 1973</div>
           
           <ul className="footer-links">
