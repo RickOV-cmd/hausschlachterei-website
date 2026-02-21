@@ -2126,9 +2126,8 @@ export default function HausschlachtereiStrassberger() {
                       </div>
                       <ul className="product-features">
                         <li>Schweinenackensteaks</li>
-                        <li>Schweinekoteletts</li>
-                        <li>Minutensteaks</li>
-                        <li>Grillspieße</li>
+                        <li>Schweinerückensteaks</li>
+                        <li>Bauchfleisch-gewürzt</li>
                       </ul>
                     </div>
                   </div>
@@ -2148,10 +2147,11 @@ export default function HausschlachtereiStrassberger() {
                         Hausgemachte Bratwürste nach traditioneller Rezeptur – perfekt für den Grill.
                       </div>
                       <ul className="product-features">
-                        <li>Thüringer Rostbratwurst</li>
+                        <li>Bratwurst</li>
                         <li>Currywurst</li>
-                        <li>Grobe Bratwurst</li>
+                        <li>Schinkengriller</li>
                         <li>Krakauer</li>
+                        <li>Wildbratwurst</li>
                       </ul>
                     </div>
                   </div>
@@ -2172,8 +2172,9 @@ export default function HausschlachtereiStrassberger() {
                       </div>
                       <ul className="product-features">
                         <li>Leberwurst</li>
-                        <li>Blutwurst</li>
-                        <li>Schinkenwurst</li>
+                        <li>Mortadella</li>
+                        <li>Bierschinken</li>
+                        <li>Jagdwurst</li>
                         <li>Mettwurst</li>
                       </ul>
                     </div>
@@ -2194,9 +2195,9 @@ export default function HausschlachtereiStrassberger() {
                         Frisch zubereitete Suppen nach Hausrezept – einfach erwärmen und genießen.
                       </div>
                       <ul className="product-features">
-                        <li>Erbsensuppe mit Würstchen</li>
-                        <li>Gulaschsuppe</li>
                         <li>Hühnersuppe</li>
+                        <li>Hochzeitssuppe</li>
+                        <li>Kohlroulade</li>
                       </ul>
                     </div>
                   </div>
@@ -2217,8 +2218,7 @@ export default function HausschlachtereiStrassberger() {
                       </div>
                       <ul className="product-features">
                         <li>Kartoffelsalat</li>
-                        <li>Nudelsalat</li>
-                        <li>Krautsalat</li>
+                        <li>Fleischsalat</li>
                       </ul>
                     </div>
                   </div>
@@ -2238,9 +2238,8 @@ export default function HausschlachtereiStrassberger() {
                         Saisonale Spezialitäten und Angebote – schauen Sie vorbei und entdecken Sie Neues!
                       </div>
                       <ul className="product-features">
-                        <li>Grillpakete</li>
                         <li>Saisonale Spezialitäten</li>
-                        <li>Party-Pakete</li>
+                        <li>verschiedene Wurstsorten</li>
                       </ul>
                     </div>
                   </div>
