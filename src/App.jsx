@@ -1913,7 +1913,7 @@ export default function HausschlachtereiStrassberger() {
     src="/images/logo.jpg" 
     alt="Hausschlachterei Straßberger" 
     style={{ 
-      height: '45px',
+      height: '60px',
       width: 'auto',
       display: 'block',
       marginBottom: '0.15rem'
@@ -2010,7 +2010,7 @@ export default function HausschlachtereiStrassberger() {
     src="/images/logo.jpg" 
     alt="Hausschlachterei Straßberger" 
     style={{ 
-      height: '45px',
+      height: '60px',
       width: 'auto',
       display: 'block'
     }}
@@ -2125,7 +2125,7 @@ export default function HausschlachtereiStrassberger() {
     src="/images/logo.jpg" 
     alt="Hausschlachterei Straßberger" 
     style={{ 
-      height: '45px',
+      height: '60px',
       width: 'auto',
       display: 'block'
     }}
@@ -2345,7 +2345,7 @@ export default function HausschlachtereiStrassberger() {
     src="/images/logo.jpg" 
     alt="Hausschlachterei Straßberger" 
     style={{ 
-      height: '45px',
+      height: '60px',
       width: 'auto',
       display: 'block',
       objectFit: 'contain'
@@ -2403,7 +2403,7 @@ export default function HausschlachtereiStrassberger() {
     src="/images/logo.jpg" 
     alt="Hausschlachterei Straßberger" 
     style={{ 
-      height: '45px',
+      height: '60px',
       width: 'auto',
       display: 'block',
       objectFit: 'contain'
