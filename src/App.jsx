@@ -2832,7 +2832,6 @@ export default function HausschlachtereiStrassberger() {
             </div>
           )}
         </div>
-        </div>
       </section>
 
       {/* Origin Section */}
