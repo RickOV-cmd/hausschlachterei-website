@@ -243,14 +243,15 @@ export default function HausschlachtereiStrassberger() {
           box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
         }
 
-        .header-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1.2rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+       .header-container {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 1.2rem 3rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
         .logo {
