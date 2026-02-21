@@ -2389,7 +2389,6 @@ export default function HausschlachtereiStrassberger() {
           >
             <Menu size={28} />
           </button>
-        </div>
       </header>
 
       {/* Mobile Navigation */}
