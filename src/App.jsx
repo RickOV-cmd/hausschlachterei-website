@@ -1909,7 +1909,7 @@ export default function HausschlachtereiStrassberger() {
         <>
           <header className={`header ${scrolled ? 'scrolled' : ''}`}>
             <div className="header-container">
-              <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+              <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', flexShrink: 0 }}>
   <img 
     src="/images/logo.jpg" 
     alt="Hausschlachterei Straßberger" 
@@ -2341,7 +2341,7 @@ export default function HausschlachtereiStrassberger() {
       {currentPage === 'main' && (
       <>
       {/* Header */}
-      <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: 'auto' }}>
+      <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', flexShrink: 0 }}>
   <img 
     src="/images/logo.jpg" 
     alt="Hausschlachterei Straßberger" 
