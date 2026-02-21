@@ -197,7 +197,7 @@ export default function HausschlachtereiStrassberger() {
   return (
     <div className="website">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Manrope:wght@400;500;600;700&family=Anton&family=Fette+Fraktur&display=swap');
 
         * {
           margin: 0;
@@ -1883,9 +1883,13 @@ export default function HausschlachtereiStrassberger() {
           <header className={`header ${scrolled ? 'scrolled' : ''}`}>
             <div className="header-container">
               <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer' }}>
-                <div className="logo-name">Hausschlachterei Straßberger</div>
-                <div className="logo-tagline">Seit 1973</div>
-              </div>
+ <div className="logo-name">
+  <span style={{ fontFamily: 'Anton, sans-serif', fontWeight: '400', letterSpacing: '1px' }}>Hausschlachterei</span>
+  <br />
+  <span style={{ fontFamily: 'Fette Fraktur, cursive', fontWeight: '400', color: '#e0393b', fontSize: '1.5rem' }}>Straßberger</span>
+</div>
+  <div className="logo-tagline">Seit 1973</div>
+</div>
             </div>
           </header>
 
@@ -2342,10 +2346,14 @@ export default function HausschlachtereiStrassberger() {
       />
       <div className={`mobile-nav ${mobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-nav-header">
-          <div className="logo">
-            <div className="logo-name">Hausschlachterei Straßberger</div>
-            <div className="logo-tagline">Seit 1973</div>
-          </div>
+  <div className="logo">
+    <div className="logo-name">
+      <span style={{ fontFamily: 'Anton, sans-serif', fontWeight: '400', letterSpacing: '1px' }}>Hausschlachterei</span>
+      <br />
+      <span style={{ fontFamily: 'Fette Fraktur, cursive', fontWeight: '400', color: '#e0393b', fontSize: '1.5rem' }}>Straßberger</span>
+    </div>
+    <div className="logo-tagline">Seit 1973</div>
+  </div>
           <button 
             onClick={() => setMobileMenuOpen(false)}
             style={{ 
@@ -2930,7 +2938,10 @@ export default function HausschlachtereiStrassberger() {
       {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
-          <div className="footer-logo">Hausschlachterei Straßberger</div>
+          <div className="footer-logo">
+  <span style={{ fontFamily: 'Anton, sans-serif', fontWeight: '400' }}>Hausschlachterei </span>
+  <span style={{ fontFamily: 'Fette Fraktur, cursive', fontWeight: '400', fontSize: '1.8rem' }}>Straßberger</span>
+</div>
           <div className="footer-tagline">WISSEN, WO'S HERKOMMT – SEIT 1973</div>
           
           <ul className="footer-links">
