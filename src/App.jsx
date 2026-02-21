@@ -2724,9 +2724,8 @@ export default function HausschlachtereiStrassberger() {
       </section>
 
       {/* Opening Hours Section */}
-      <section id="hours" className="origin-section">
-  <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
-    <h2 className="section-title">Öffnungszeiten & Standorte</h2>
+      <section id="hours">
+  <h2 className="section-title">Öffnungszeiten & Standorte</h2>
         <p className="section-subtitle">
           Besuchen Sie uns auf einem unserer Wochenmärkte oder nutzen Sie unseren 24/7 Fleischautomaten für spontanen Einkauf.
         </p>
@@ -2882,8 +2881,8 @@ export default function HausschlachtereiStrassberger() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="origin-section">
-        <div className="about-content">
+      <section id="about">
+        <div className="about-content">  
           <h2 className="section-title">Über uns</h2>
           <p className="section-subtitle">
             Familienbetrieb seit 1973 – Handwerk, Regionalität und Vertrauen in jeder Wurst.
