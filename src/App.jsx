@@ -411,6 +411,8 @@ export default function HausschlachtereiStrassberger() {
 /* Mobile Dropdown */
 .mobile-dropdown {
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .mobile-dropdown-trigger {
@@ -418,6 +420,52 @@ export default function HausschlachtereiStrassberger() {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  padding: 1rem 1.25rem;
+}
+
+.mobile-dropdown-icon {
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.mobile-dropdown.open .mobile-dropdown-icon {
+  transform: rotate(90deg);
+}
+
+.mobile-dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-dropdown.open .mobile-dropdown-content {
+  max-height: 500px;
+  padding-bottom: 0.5rem;
+}
+
+.mobile-dropdown-item {
+  padding: 0.75rem 1.25rem;
+  margin: 0.25rem 1rem;
+  background: rgba(224, 57, 59, 0.05);
+  border-radius: 8px;
+  color: var(--color-gray);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobile-dropdown-item:hover,
+.mobile-dropdown-item:active {
+  background: rgba(224, 57, 59, 0.15);
+  color: var(--color-red);
+  transform: scale(0.98);
 }
 
 .mobile-dropdown-icon {
@@ -2888,11 +2936,75 @@ export default function HausschlachtereiStrassberger() {
             <Award size={20} />
             <span>Herkunft</span>
           </li>
-          <li className={`mobile-nav-link mobile-dropdown ${mobileDropdownOpen ? 'open' : ''}`}>
+          <li className={`mobile-dropdown ${mobileDropdownOpen ? 'open' : ''}`}>
   <div 
-    className="mobile-dropdown-trigger"
-    onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+    className="mobile-nav-link"
+    style={{ 
+      padding: 0,
+      background: mobileDropdownOpen ? 'rgba(224, 57, 59, 0.05)' : 'var(--color-bg-light)',
+      border: mobileDropdownOpen ? '2px solid var(--color-red)' : '2px solid transparent'
+    }}
   >
+    <div 
+      className="mobile-dropdown-trigger"
+      onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <Users size={20} />
+        <span>Über uns</span>
+      </div>
+      <ChevronRight size={20} className="mobile-dropdown-icon" />
+    </div>
+    
+    <div className="mobile-dropdown-content">
+      <div 
+        className="mobile-dropdown-item"
+        onClick={() => {
+          scrollToSection('about');
+          setMobileDropdownOpen(false);
+        }}
+      >
+        Über unseren Betrieb
+      </div>
+      
+      <div style={{ 
+        height: '1px', 
+        background: '#e0e0e0', 
+        margin: '0.5rem 1.5rem' 
+      }}></div>
+      
+      <div 
+        className="mobile-dropdown-item"
+        onClick={() => {
+          navigateToPage('presse#2020');
+          setMobileDropdownOpen(false);
+        }}
+      >
+        📰 Zeitungsartikel 2020
+      </div>
+      
+      <div 
+        className="mobile-dropdown-item"
+        onClick={() => {
+          navigateToPage('presse#2017');
+          setMobileDropdownOpen(false);
+        }}
+      >
+        📰 Zeitungsartikel 2017
+      </div>
+      
+      <div 
+        className="mobile-dropdown-item"
+        onClick={() => {
+          navigateToPage('presse#2010');
+          setMobileDropdownOpen(false);
+        }}
+      >
+        📰 Zeitungsartikel 2010
+      </div>
+    </div>
+  </div>
+</li>
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
       <Users size={20} />
       <span>Über uns</span>
