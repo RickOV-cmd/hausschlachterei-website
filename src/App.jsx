@@ -68,10 +68,31 @@ export default function HausschlachtereiStrassberger() {
   };
 
   const navigateToPage = (page) => {
+  // Handle hash navigation for press articles
+  if (page.includes('#')) {
+    const [pageName, hash] = page.split('#');
+    setCurrentPage(pageName);
+    setMobileMenuOpen(false);
+    
+    // Wait for page to render, then scroll to article
+    setTimeout(() => {
+      const element = document.getElementById(hash);
+      if (element) {
+        const offset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
+  } else {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setMobileMenuOpen(false);
-  };
+  }
+};
 
   const openGoogleMaps = (address) => {
     const encodedAddress = encodeURIComponent(address);
