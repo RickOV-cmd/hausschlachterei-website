@@ -2894,82 +2894,6 @@ export default function HausschlachtereiStrassberger() {
           </div>
         </>
       )}
-      {/* Render Main Page */}
-      {currentPage === 'main' && (
-      <>
-      {/* Header */}
-      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-        <div className="header-container">
-          <div className="logo" onClick={() => scrollToSection('home')} style={{ cursor: 'pointer' }}>
-            <div className="logo-name">Hausschlachterei Straßberger</div>
-            <div className="logo-tagline">Seit 1973</div>
-          </div>
-
-          <nav className="nav-desktop">
-  <ul className="nav-links">
-    <li 
-      className={`nav-link automat`}
-      onClick={() => navigateToPage('automat')}
-    >
-      🕐 24/7 Automat
-    </li>
-    <li 
-      className={`nav-link ${activeSection === 'hours' ? 'active' : ''}`}
-      onClick={() => scrollToSection('hours')}
-    >
-      Standorte
-    </li>
-    <li 
-      className={`nav-link ${activeSection === 'origin' ? 'active' : ''}`}
-      onClick={() => scrollToSection('origin')}
-    >
-      Herkunft
-    </li>
-    <li className="nav-dropdown">
-  <div className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}>
-    Über uns
-  </div>
-  <div className="dropdown-content">
-    <div 
-      className="dropdown-item"
-      onClick={() => scrollToSection('about')}
-    >
-      Über unseren Betrieb
-    </div>
-    <div className="dropdown-divider"></div>
-    <div 
-      className="dropdown-item"
-      onClick={() => navigateToPage('presse#2020')}
-    >
-      📰 Zeitungsartikel 2020
-    </div>
-    <div 
-      className="dropdown-item"
-      onClick={() => navigateToPage('presse#2017')}
-    >
-      📰 Zeitungsartikel 2017
-    </div>
-    <div 
-      className="dropdown-item"
-      onClick={() => navigateToPage('presse#2010')}
-    >
-      📰 Zeitungsartikel 2010
-    </div>
-  </div>
-</li>
-  </ul>
-</nav>
-
-          <button 
-            className="mobile-menu-button"
-            onClick={() => setMobileMenuOpen(true)}
-            aria-label="Menü öffnen"
-          >
-            <Menu size={28} />
-          </button>
-        </div>
-      </header>
-
       {/* Mobile Navigation */}
       <div 
         className={`mobile-overlay ${mobileMenuOpen ? 'open' : ''}`}
@@ -3104,6 +3028,84 @@ export default function HausschlachtereiStrassberger() {
 </li>
         </ul>
       </div>
+      
+      {/* Render Main Page */}
+      {currentPage === 'main' && (
+      <>
+      {/* Header */}
+      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+        <div className="header-container">
+          <div className="logo" onClick={() => scrollToSection('home')} style={{ cursor: 'pointer' }}>
+            <div className="logo-name">Hausschlachterei Straßberger</div>
+            <div className="logo-tagline">Seit 1973</div>
+          </div>
+
+          <nav className="nav-desktop">
+  <ul className="nav-links">
+    <li 
+      className={`nav-link automat`}
+      onClick={() => navigateToPage('automat')}
+    >
+      🕐 24/7 Automat
+    </li>
+    <li 
+      className={`nav-link ${activeSection === 'hours' ? 'active' : ''}`}
+      onClick={() => scrollToSection('hours')}
+    >
+      Standorte
+    </li>
+    <li 
+      className={`nav-link ${activeSection === 'origin' ? 'active' : ''}`}
+      onClick={() => scrollToSection('origin')}
+    >
+      Herkunft
+    </li>
+    <li className="nav-dropdown">
+  <div className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}>
+    Über uns
+  </div>
+  <div className="dropdown-content">
+    <div 
+      className="dropdown-item"
+      onClick={() => scrollToSection('about')}
+    >
+      Über unseren Betrieb
+    </div>
+    <div className="dropdown-divider"></div>
+    <div 
+      className="dropdown-item"
+      onClick={() => navigateToPage('presse#2020')}
+    >
+      📰 Zeitungsartikel 2020
+    </div>
+    <div 
+      className="dropdown-item"
+      onClick={() => navigateToPage('presse#2017')}
+    >
+      📰 Zeitungsartikel 2017
+    </div>
+    <div 
+      className="dropdown-item"
+      onClick={() => navigateToPage('presse#2010')}
+    >
+      📰 Zeitungsartikel 2010
+    </div>
+  </div>
+</li>
+  </ul>
+</nav>
+
+          <button 
+            className="mobile-menu-button"
+            onClick={() => setMobileMenuOpen(true)}
+            aria-label="Menü öffnen"
+          >
+            <Menu size={28} />
+          </button>
+        </div>
+      </header>
+
+
 
       {/* Market Modal */}
       {showMarketModal && (
