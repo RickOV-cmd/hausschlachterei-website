@@ -408,7 +408,11 @@ export default function HausschlachtereiStrassberger() {
 
 /* Mobile Dropdown für Über uns */
 .mobile-nav-link.has-dropdown {
-  padding: 0;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  width: 100% !important;
 }
 
 .mobile-dropdown-header {
@@ -417,16 +421,21 @@ export default function HausschlachtereiStrassberger() {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  width: 100%;
+  flex-shrink: 0;
 }
 
 .mobile-dropdown-header-content {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex: 1;
 }
 
 .mobile-dropdown-arrow {
   transition: transform 0.3s ease;
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 .mobile-nav-link.has-dropdown.open .mobile-dropdown-arrow {
@@ -437,10 +446,14 @@ export default function HausschlachtereiStrassberger() {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .mobile-nav-link.has-dropdown.open .mobile-dropdown-items {
-  max-height: 400px;
+  max-height: 500px;
+  padding-bottom: 0.5rem;
 }
 
 .mobile-dropdown-subitem {
@@ -450,12 +463,12 @@ export default function HausschlachtereiStrassberger() {
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  display: block;
+  width: calc(100% - 2rem);
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-gray);
+  box-sizing: border-box;
 }
 
 .mobile-dropdown-subitem:active {
@@ -467,6 +480,7 @@ export default function HausschlachtereiStrassberger() {
   height: 1px;
   background: #e0e0e0;
   margin: 0.5rem 1.5rem;
+  width: calc(100% - 3rem);
 }
 
 // nachtäglich hinzugefügt
@@ -621,6 +635,11 @@ export default function HausschlachtereiStrassberger() {
           position: relative;
           overflow: hidden;
         }
+
+        .mobile-nav-link.has-dropdown {
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
 
         .mobile-nav.open .mobile-nav-link {
           animation: slideInRight 0.4s ease forwards;
