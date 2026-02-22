@@ -11,6 +11,10 @@ export default function HausschlachtereiStrassberger() {
   const [modalTab, setModalTab] = useState('today');
   const [currentPage, setCurrentPage] = useState('main'); // 'main', 'impressum', 'datenschutz', 'automat', 'sortiment'
   
+  // nachträglich hinzugefügt
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  
+  
   // Get today's day in German
   const today = new Date().toLocaleDateString('de-DE', { weekday: 'long' });
   const todayCapitalized = today.charAt(0).toUpperCase() + today.slice(1);
@@ -347,6 +351,61 @@ export default function HausschlachtereiStrassberger() {
         .nav-link.active::before {
           display: none;
         }
+
+// Dropdown Menu
+
+/* Dropdown Menu */
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-white);
+  min-width: 220px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  margin-top: 0.5rem;
+}
+
+.nav-dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  margin-top: 0.75rem;
+}
+
+.dropdown-item {
+  padding: 0.75rem 1.25rem;
+  color: var(--color-gray);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdown-item:hover {
+  background: rgba(224, 57, 59, 0.05);
+  color: var(--color-red);
+  padding-left: 1.5rem;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: #f0f0f0;
+  margin: 0.5rem 0;
+}
+
 
         .nav-link.automat {
           background: linear-gradient(135deg, var(--color-red) 0%, #c9302c 100%);
@@ -2093,6 +2152,260 @@ export default function HausschlachtereiStrassberger() {
         </>
       )}
 
+{/* Render Presse Page */}
+{currentPage.startsWith('presse') && (
+  <>
+    <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+      <div className="header-container" style={{ paddingLeft: '3rem', paddingRight: '3rem' }}>
+        <div onClick={() => navigateToPage('main')} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', flexShrink: 0 }}>
+          <img 
+            src="/images/logo.jpg" 
+            alt="Hausschlachterei Straßberger" 
+            style={{ height: '60px', width: 'auto', display: 'block', objectFit: 'contain' }}
+          />
+          <div className="logo-tagline" style={{ marginTop: '0.2rem' }}>Seit 1973</div>
+        </div>
+      </div>
+    </header>
+
+    <div className="product-page">
+      <div className="product-container">
+        <button className="legal-back-btn" onClick={() => navigateToPage('main')}>
+          <ChevronRight size={20} style={{ transform: 'rotate(180deg)' }} />
+          Zurück zur Startseite
+        </button>
+
+        <div className="product-hero">
+          <div className="product-hero-title">📰 Zeitungsartikel</div>
+          <div className="product-hero-text">
+            Wir in den Medien – Tradition, Qualität und Handwerk aus Schaumburg
+          </div>
+        </div>
+
+        {/* Artikel 2020 */}
+        <div id="2020" style={{ scrollMarginTop: '120px', marginBottom: '4rem' }}>
+          <div style={{
+            background: 'var(--color-white)',
+            borderRadius: '16px',
+            overflow: 'hidden',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+            border: '2px solid #f0f0f0'
+          }}>
+            <div style={{
+              background: 'linear-gradient(135deg, var(--color-red) 0%, #c9302c 100%)',
+              color: 'var(--color-white)',
+              padding: '2rem',
+              textAlign: 'center'
+            }}>
+              <h2 style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '2rem',
+                fontWeight: '800',
+                marginBottom: '0.5rem'
+              }}>
+                Hausschlachterei hat drei Auszubildende
+              </h2>
+              <p style={{ fontSize: '1.1rem', opacity: 0.95 }}>
+                Freitag, 9. Oktober 2020
+              </p>
+            </div>
+            
+            <div style={{ padding: '2rem' }}>
+              <img 
+                src="/images/zeitungsartikel2020.jpg"
+                alt="Zeitungsartikel 2020 - Drei Auszubildende"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: '12px',
+                  marginBottom: '2rem',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                }}
+              />
+              
+              <div style={{
+                fontSize: '1.05rem',
+                lineHeight: '1.8',
+                color: '#555',
+                marginBottom: '1.5rem'
+              }}>
+                <p style={{ marginBottom: '1rem' }}>
+                  Die Hausschlachterei Straßberger ist einer der letzten Handwerksbetriebe dieser Art in der Region. Der SB-Automat ergänzt bei Straßberger den Verkaufswagen perfekt.
+                </p>
+                <p style={{ marginBottom: '1rem' }}>
+                  Immer strengere gesetzliche Auflagen, Preisdruck und Nachwuchsmangel haben dazu geführt, dass viele selbst schlachtende Fleischereien aufgegeben haben. Doch Kai Straßberger, der Chef des Familienbetriebs, hat gute Gründe zum Optimismus.
+                </p>
+                <p style={{ marginBottom: '1rem' }}>
+                  <strong>Zwei junge Männer bildet der 47-jährige Fleischermeister derzeit aus.</strong> Sie sind regelmäßig mit dem Verkaufswagen der Hausschlachterei Straßberger auf Wochenmärkten und an anderen Standorten im Landkreis unterwegs, um dort die Wurst- und Fleischwaren aus eigener Herstellung zu verkaufen.
+                </p>
+                <p>
+                  Der neue SB-Automat vor dem Haus an der Neuen Straße 2 in Buchholz wird von den Kunden sehr gut angenommen. Die Bandbreite der dort offerierten Produkte reicht von diversen Wurstsorten über Grillfleisch bis hin zu beispielsweise Gläsern mit Schaumburger Hochzeitssuppe.
+                </p>
+              </div>
+              
+              <div style={{
+                background: 'var(--color-bg-light)',
+                padding: '1.5rem',
+                borderRadius: '12px',
+                borderLeft: '4px solid var(--color-red)'
+              }}>
+                <strong style={{ color: 'var(--color-red)' }}>Ausbildung:</strong> Die Hausschlachterei bildet kontinuierlich junge Fachkräfte aus und sichert so das Fortbestehen des traditionellen Handwerks in der Region.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Artikel 2017 */}
+        <div id="2017" style={{ scrollMarginTop: '120px', marginBottom: '4rem' }}>
+          <div style={{
+            background: 'var(--color-white)',
+            borderRadius: '16px',
+            overflow: 'hidden',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+            border: '2px solid #f0f0f0'
+          }}>
+            <div style={{
+              background: 'linear-gradient(135deg, var(--color-red) 0%, #c9302c 100%)',
+              color: 'var(--color-white)',
+              padding: '2rem',
+              textAlign: 'center'
+            }}>
+              <h2 style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '2rem',
+                fontWeight: '800',
+                marginBottom: '0.5rem'
+              }}>
+                Lokales Denken, entspannte Schweine, gutes Fleisch
+              </h2>
+              <p style={{ fontSize: '1.1rem', opacity: 0.95 }}>
+                2017
+              </p>
+            </div>
+            
+            <div style={{ padding: '2rem' }}>
+              <img 
+                src="/images/zeitungsartikel2017.jpg"
+                alt="Zeitungsartikel 2017 - Kooperation Hof Gottschalk"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: '12px',
+                  marginBottom: '2rem',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                }}
+              />
+              
+              <div style={{
+                fontSize: '1.05rem',
+                lineHeight: '1.8',
+                color: '#555',
+                marginBottom: '1.5rem'
+              }}>
+                <p style={{ marginBottom: '1rem' }}>
+                  <strong>Hof Gottschalk in Kirchhorsten kooperiert mit nahegelegenen Betrieben für eine gesunde Aufzucht</strong>
+                </p>
+                <p style={{ marginBottom: '1rem' }}>
+                  Rund 300 Schweine hält Hinrich Gottschalk auf seinem Hof – artgerecht und professionell. Die Ferkel stammen aus Gelldorf, nach einem guten halben Jahr geht es dann in die Schlachterei nach Buchholz.
+                </p>
+                <p style={{ marginBottom: '1rem' }}>
+                  Hinrich Gottschalk arbeitet eng mit Fleischermeister Kai Straßberger und seiner Frau Bettina zusammen. Die Kooperation basiert auf gegenseitigem Vertrauen und dem gemeinsamen Ziel: höchste Qualität durch artgerechte Haltung und kurze Wege.
+                </p>
+                <p>
+                  "Viele sind sich heute über die Umstände gar nicht mehr bewusst", sagt Landwirt Hinrich Gottschalk. „Der Umgang mit den Tieren hat sich aber deutlich verbessert." Nicht nur große Ställe und frische Luft, sondern auch die Fütterung macht den Unterschied.
+                </p>
+              </div>
+              
+              <div style={{
+                background: 'var(--color-bg-light)',
+                padding: '1.5rem',
+                borderRadius: '12px',
+                borderLeft: '4px solid var(--color-red)'
+              }}>
+                <strong style={{ color: 'var(--color-red)' }}>Regionale Partnerschaft:</strong> Die enge Zusammenarbeit mit lokalen Landwirten garantiert kurze Wege, Transparenz und beste Fleischqualität.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Artikel 2010 */}
+        <div id="2010" style={{ scrollMarginTop: '120px', marginBottom: '4rem' }}>
+          <div style={{
+            background: 'var(--color-white)',
+            borderRadius: '16px',
+            overflow: 'hidden',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+            border: '2px solid #f0f0f0'
+          }}>
+            <div style={{
+              background: 'linear-gradient(135deg, var(--color-red) 0%, #c9302c 100%)',
+              color: 'var(--color-white)',
+              padding: '2rem',
+              textAlign: 'center'
+            }}>
+              <h2 style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '2rem',
+                fontWeight: '800',
+                marginBottom: '0.5rem'
+              }}>
+                Hausschlachter durch EU-Erlass bedroht
+              </h2>
+              <p style={{ fontSize: '1.1rem', opacity: 0.95 }}>
+                2010
+              </p>
+            </div>
+            
+            <div style={{ padding: '2rem' }}>
+              <img 
+                src="/images/zeitungsartikel2010.jpg"
+                alt="Zeitungsartikel 2010 - EU-Zulassung"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: '12px',
+                  marginBottom: '2rem',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                }}
+              />
+              
+              <div style={{
+                fontSize: '1.05rem',
+                lineHeight: '1.8',
+                color: '#555',
+                marginBottom: '1.5rem'
+              }}>
+                <p style={{ marginBottom: '1rem' }}>
+                  Die Hausschlachterei Straßberger besteht seit 1973. Als die EU vor einigen Jahren eine neue Richtlinie zur Fleischhygiene erließ, hätte das Straßberger als einen der letzten Betriebe in Schaumburg, die noch selbst schlachten, fast die Existenz gekostet.
+                </p>
+                <p style={{ marginBottom: '1rem' }}>
+                  <strong>Der sechsköpfige Familienbetrieb investierte 45.000 Euro</strong>, um die EU-Zulassung zu erhalten. Eine Hygieneschleuse, ein zweites Kühlhaus, moderne Böden und Decken – alles wurde erneuert und auf höchste Standards gebracht.
+                </p>
+                <p style={{ marginBottom: '1rem' }}>
+                  „Alles blitzsauber" befand die Prüferin des Niedersächsischen Landesamtes für Verbraucherschutz und Lebensmittelsicherheit, als sie den Buchholzer Betrieb unter die Lupe nahm.
+                </p>
+                <p>
+                  Dank der Investitionen in modernste Hygiene-Ausstattung und strengste Qualitätskontrollen erhielt die Hausschlachterei die offizielle EU-Zulassung und sichert so das Fortbestehen der traditionellen Handwerkskunst.
+                </p>
+              </div>
+              
+              <div style={{
+                background: 'var(--color-bg-light)',
+                padding: '1.5rem',
+                borderRadius: '12px',
+                borderLeft: '4px solid var(--color-red)'
+              }}>
+                <strong style={{ color: 'var(--color-red)' }}>EU-Zulassung:</strong> Mit 45.000 Euro Investition in modernste Hygienestandards erhielt die Hausschlachterei Straßberger die offizielle EU-Zulassung und gehört damit zu den wenigen verbliebenen Betrieben mit eigener Schlachtung in Schaumburg.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </>
+)}
+      
       {/* Render 24/7 Automat Page */}
       {currentPage === 'automat' && (
         <>
@@ -2337,12 +2650,38 @@ export default function HausschlachtereiStrassberger() {
     >
       Herkunft
     </li>
-    <li 
-      className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
+    <li className="nav-dropdown">
+  <div className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}>
+    Über uns
+  </div>
+  <div className="dropdown-content">
+    <div 
+      className="dropdown-item"
       onClick={() => scrollToSection('about')}
     >
-      Über uns
-    </li>
+      Über unseren Betrieb
+    </div>
+    <div className="dropdown-divider"></div>
+    <div 
+      className="dropdown-item"
+      onClick={() => navigateToPage('presse#2020')}
+    >
+      📰 Zeitungsartikel 2020
+    </div>
+    <div 
+      className="dropdown-item"
+      onClick={() => navigateToPage('presse#2017')}
+    >
+      📰 Zeitungsartikel 2017
+    </div>
+    <div 
+      className="dropdown-item"
+      onClick={() => navigateToPage('presse#2010')}
+    >
+      📰 Zeitungsartikel 2010
+    </div>
+  </div>
+</li>
   </ul>
 </nav>
 
@@ -2429,6 +2768,13 @@ export default function HausschlachtereiStrassberger() {
             <Users size={20} />
             <span>Über uns</span>
           </li>
+          <li 
+  className="mobile-nav-link"
+  onClick={() => navigateToPage('presse')}
+>
+  <Award size={20} />
+  <span>Zeitungsartikel</span>
+</li>
         </ul>
       </div>
 
