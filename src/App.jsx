@@ -3055,6 +3055,7 @@ export default function HausschlachtereiStrassberger() {
       📰 Zeitungsartikel 2010
     </div>
   </div>
+ </div>
 </li>
         </ul>
       </div>
