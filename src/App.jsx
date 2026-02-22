@@ -2534,7 +2534,7 @@ export default function HausschlachtereiStrassberger() {
       {/* Home Section */}
       <section id="home" className="hero">
         <div className="hero-content">
-          <h1 className="hero-headline">Wissen, wo's herkommt.</h1>
+          <h1 className="hero-headline">Wissen, wo's herkommt!</h1>
           <p className="hero-subline">
             Frisches Fleisch und handgemachte Wurstwaren – direkt aus unserem Familienbetrieb in Buchholz. Seit 1973.
           </p>
