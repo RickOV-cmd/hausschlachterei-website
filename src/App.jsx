@@ -2096,13 +2096,85 @@ export default function HausschlachtereiStrassberger() {
       {currentPage === 'impressum' && (
         <>
           <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-            <div className="header-container">
-              <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer' }}>
-                <div className="logo-name">Hausschlachterei Straßberger</div>
-                <div className="logo-tagline">Seit 1973</div>
-              </div>
+  <div className="header-container">
+    <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer' }}>
+      <div className="logo-name">Hausschlachterei Straßberger</div>
+      <div className="logo-tagline">Seit 1973</div>
+    </div>
+
+    <nav className="nav-desktop">
+      <ul className="nav-links">
+        <li 
+          className="nav-link automat"
+          onClick={() => navigateToPage('automat')}
+        >
+          🕐 24/7 Automat
+        </li>
+        <li 
+          className="nav-link"
+          onClick={() => {
+            navigateToPage('main');
+            setTimeout(() => scrollToSection('hours'), 100);
+          }}
+        >
+          Standorte
+        </li>
+        <li 
+          className="nav-link"
+          onClick={() => {
+            navigateToPage('main');
+            setTimeout(() => scrollToSection('origin'), 100);
+          }}
+        >
+          Herkunft
+        </li>
+        <li className="nav-dropdown">
+          <div className="nav-link active">
+            Über uns
+          </div>
+          <div className="dropdown-content">
+            <div 
+              className="dropdown-item"
+              onClick={() => {
+                navigateToPage('main');
+                setTimeout(() => scrollToSection('about'), 100);
+              }}
+            >
+              Über unseren Betrieb
             </div>
-          </header>
+            <div className="dropdown-divider"></div>
+            <div 
+              className="dropdown-item"
+              onClick={() => navigateToPage('presse#2020')}
+            >
+              📰 Zeitungsartikel 2020
+            </div>
+            <div 
+              className="dropdown-item"
+              onClick={() => navigateToPage('presse#2017')}
+            >
+              📰 Zeitungsartikel 2017
+            </div>
+            <div 
+              className="dropdown-item"
+              onClick={() => navigateToPage('presse#2010')}
+            >
+              📰 Zeitungsartikel 2010
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <button 
+      className="mobile-menu-button"
+      onClick={() => setMobileMenuOpen(true)}
+      aria-label="Menü öffnen"
+    >
+      <Menu size={28} />
+    </button>
+  </div>
+</header>
 
           <div className="legal-page">
             <div className="legal-container">
