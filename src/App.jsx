@@ -1912,6 +1912,7 @@ export default function HausschlachtereiStrassberger() {
       {currentPage === 'impressum' && (
         <>
          {/* Header */}
+{/* Header */}
 <header className={`header ${scrolled ? 'scrolled' : ''}`}>
   <div className="header-container" style={{ paddingLeft: '3rem', paddingRight: '3rem', maxWidth: '1400px', margin: '0 auto' }}>
     <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
