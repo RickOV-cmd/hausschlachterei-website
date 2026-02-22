@@ -406,6 +406,69 @@ export default function HausschlachtereiStrassberger() {
   margin: 0.5rem 0;
 }
 
+/* Mobile Dropdown für Über uns */
+.mobile-nav-link.has-dropdown {
+  padding: 0;
+}
+
+.mobile-dropdown-header {
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.mobile-dropdown-header-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mobile-dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav-link.has-dropdown.open .mobile-dropdown-arrow {
+  transform: rotate(90deg);
+}
+
+.mobile-dropdown-items {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.mobile-nav-link.has-dropdown.open .mobile-dropdown-items {
+  max-height: 400px;
+}
+
+.mobile-dropdown-subitem {
+  padding: 0.75rem 1.25rem;
+  margin: 0.25rem 1rem;
+  background: rgba(224, 57, 59, 0.05);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-gray);
+}
+
+.mobile-dropdown-subitem:active {
+  background: rgba(224, 57, 59, 0.15);
+  transform: scale(0.98);
+}
+
+.mobile-dropdown-divider {
+  height: 1px;
+  background: #e0e0e0;
+  margin: 0.5rem 1.5rem;
+}
+
 // nachtäglich hinzugefügt
 
 /* Mobile Dropdown */
@@ -2888,55 +2951,62 @@ export default function HausschlachtereiStrassberger() {
             <Award size={20} />
             <span>Herkunft</span>
           </li>
-          <li className={`mobile-nav-link mobile-dropdown ${mobileDropdownOpen ? 'open' : ''}`}>
+          <li className={`mobile-nav-link has-dropdown ${mobileDropdownOpen ? 'open' : ''}`}>
   <div 
-    className="mobile-dropdown-trigger"
-    onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+    className="mobile-dropdown-header"
+    onClick={(e) => {
+      e.stopPropagation();
+      setMobileDropdownOpen(!mobileDropdownOpen);
+    }}
   >
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+    <div className="mobile-dropdown-header-content">
       <Users size={20} />
       <span>Über uns</span>
     </div>
-    <ChevronRight size={20} className="mobile-dropdown-icon" />
+    <ChevronRight size={20} className="mobile-dropdown-arrow" />
   </div>
   
-  <div className="mobile-dropdown-content">
+  <div className="mobile-dropdown-items">
     <div 
-      className="mobile-dropdown-item"
+      className="mobile-dropdown-subitem"
       onClick={() => {
         scrollToSection('about');
+        setMobileMenuOpen(false);
         setMobileDropdownOpen(false);
       }}
     >
       Über unseren Betrieb
     </div>
-    <div style={{ 
-      height: '1px', 
-      background: '#f0f0f0', 
-      margin: '0.5rem 0' 
-    }}></div>
+    
+    <div className="mobile-dropdown-divider"></div>
+    
     <div 
-      className="mobile-dropdown-item"
+      className="mobile-dropdown-subitem"
       onClick={() => {
         navigateToPage('presse#2020');
+        setMobileMenuOpen(false);
         setMobileDropdownOpen(false);
       }}
     >
       📰 Zeitungsartikel 2020
     </div>
+    
     <div 
-      className="mobile-dropdown-item"
+      className="mobile-dropdown-subitem"
       onClick={() => {
         navigateToPage('presse#2017');
+        setMobileMenuOpen(false);
         setMobileDropdownOpen(false);
       }}
     >
       📰 Zeitungsartikel 2017
     </div>
+    
     <div 
-      className="mobile-dropdown-item"
+      className="mobile-dropdown-subitem"
       onClick={() => {
         navigateToPage('presse#2010');
+        setMobileMenuOpen(false);
         setMobileDropdownOpen(false);
       }}
     >
