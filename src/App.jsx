@@ -166,7 +166,7 @@ export default function HausschlachtereiStrassberger() {
     {
       day: 'Freitag',
       locations: [
-        { name: 'Marktplatz, Obernkirchen', time: '07:30 bis 13:00', address: 'Lange Str. 24, 31683 Obernkirchen' },
+        { name: 'Marktplatz, Obernkirchen', time: '07:30 bis 13:00', address: 'Marktpl. 5-6, 31683 Obernkirchen' },
         { name: 'Ovesiek\'s Hof, Meinsen', time: '14:00 bis 18:00', address: 'Meinser Str. 23, 31675 Bückeburg' }
       ]
     },
@@ -2094,7 +2094,7 @@ export default function HausschlachtereiStrassberger() {
               <div className="product-hero">
                 <div className="product-hero-title">🕐 24/7 Fleischautomat</div>
                 <div className="product-hero-text">
-                  Frische Qualität rund um die Uhr – unser Automat auf Straßberger's Hof in Buchholz bietet Ihnen jederzeit 
+                  Frische Qualität rund um die Uhr – unser Automat auf unserem Hof in Buchholz bietet Ihnen jederzeit 
                   eine große Auswahl an Grillfleisch, Würstchen, Suppen, Salaten und vielem mehr. Perfekt für spontanen Genuss!
                 </div>
                 <div style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '0.5rem' }}>
@@ -2570,7 +2570,7 @@ export default function HausschlachtereiStrassberger() {
                 <MapPin size={28} />
               </div>
               <h3 className="feature-title">Regionaler Hof aus Schaumburg</h3>
-              <p className="feature-text">Kurze Wege von bekannten lokalen Höfen</p>
+              <p className="feature-text">Kurze Wege vom bekannten lokalen Hof</p>
             </div>
 
             <div className="feature-card">
@@ -2651,7 +2651,7 @@ export default function HausschlachtereiStrassberger() {
           </p>
           <div className="automat-address">
             <MapPin size={24} />
-            <span>Straßberger's Hof, Buchholz – Neue Straße 2</span>
+            <span>Neue Straße 2, 31710 Buchholz - auf Straßberger's Hof</span>
           </div>
           <button 
             className="btn btn-white"
@@ -2668,7 +2668,7 @@ export default function HausschlachtereiStrassberger() {
         <div className="content-section">
           <h3 className="content-title">Tradition & Familienhandwerk seit 1973</h3>
           <p className="content-text">
-            Seit über 50 Jahren steht die Hausschlachterei Straßberger für echte Handwerkskunst und höchste Qualität. Als Familienbetrieb wissen wir: Gutes Fleisch braucht Zeit, Sorgfalt und die richtigen Partner. Unsere Tiere kommen von regionalen Höfen aus Schaumburg, die wir persönlich kennen. Die Verarbeitung erfolgt in unserem eigenen Betrieb – von der Schlachtung bis zur fertigen Wurst.
+            Seit über 50 Jahren steht die Hausschlachterei Straßberger für echte Handwerkskunst und höchste Qualität. Als Familienbetrieb wissen wir: Gutes Fleisch braucht Zeit, Sorgfalt und die richtigen Partner. Unsere Tiere kommen von einem regionalen Hof aus Schaumburg, die wir persönlich kennen. Die Verarbeitung erfolgt in unserem eigenen Betrieb – von der Schlachtung bis zur fertigen Wurst.
           </p>
           <p className="content-text">
             Diese kurzen Wege garantieren nicht nur Frische und Geschmack, sondern auch Transparenz. Sie können sich darauf verlassen, dass jedes unserer Produkte mit Respekt vor Tier und Natur hergestellt wird. Tradition bedeutet für uns nicht Stillstand, sondern bewährte Rezepturen mit modernem Qualitätsbewusstsein zu vereinen.
@@ -2687,7 +2687,7 @@ export default function HausschlachtereiStrassberger() {
         <div className="content-section">
           <h3 className="content-title">Herkunft, die wir kennen</h3>
           <p className="content-text">
-            Unsere Schweine stammen ausschließlich von den Höfen Pohl und Eggelmann in Gelldorf. Die sehr kurzen Transportwege bedeuten weniger Stress für die Tiere und bessere Fleischqualität für Sie. Durch die Fütterung mit selbst angebautem Getreide und einer angepassten Aufzucht erreichen wir ein langsameres Wachstum – das Fleisch wird dadurch fester und aromatischer.
+            Unsere Schweine stammen von der KLEPO Agrar GbR in Gelldorf (Schaumburg). Die sehr kurzen Transportwege bedeuten weniger Stress für die Tiere und bessere Fleischqualität für Sie. Durch die Fütterung mit selbst angebautem Getreide und einer angepassten Aufzucht erreichen wir ein langsameres Wachstum – das Fleisch wird dadurch fester und aromatischer.
           </p>
           <p className="content-text">
             Die stressarme Schlachtung erfolgt in unserem eigenen Betrieb nach einer Ruhephase. So können wir jeden Schritt selbst kontrollieren und garantieren lückenlose Herkunft vom Hof bis zum fertigen Produkt.
@@ -2844,10 +2844,7 @@ export default function HausschlachtereiStrassberger() {
 
           <ul className="origin-list">
             <li>
-              Unsere Schweine stammen ausschließlich von den Höfen Pohl und Eggelmann in Gelldorf (Schaumburg).
-            </li>
-            <li>
-              Die Ferkel kommen aus der Ferkelzucht der KLEPO Agrar GbR, ebenfalls aus Gelldorf.
+              Unsere Schweine stammen von der KLEPO Agrar GbR in Gelldorf (Schaumburg).
             </li>
             <li>
               Sehr kurze Transportwege bedeuten weniger Stress für die Tiere und bessere Qualität für Sie.
