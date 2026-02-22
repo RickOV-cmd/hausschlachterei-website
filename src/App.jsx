@@ -13,7 +13,7 @@ export default function HausschlachtereiStrassberger() {
   
   // nachträglich hinzugefügt
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   
   // Get today's day in German
   const today = new Date().toLocaleDateString('de-DE', { weekday: 'long' });
@@ -406,6 +406,59 @@ export default function HausschlachtereiStrassberger() {
   margin: 0.5rem 0;
 }
 
+// nachtäglich hinzugefügt
+
+/* Mobile Dropdown */
+.mobile-dropdown {
+  width: 100%;
+}
+
+.mobile-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.mobile-dropdown-icon {
+  transition: transform 0.3s ease;
+}
+
+.mobile-dropdown.open .mobile-dropdown-icon {
+  transform: rotate(90deg);
+}
+
+.mobile-dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding-left: 1rem;
+}
+
+.mobile-dropdown.open .mobile-dropdown-content {
+  max-height: 400px;
+  margin-top: 0.5rem;
+}
+
+.mobile-dropdown-item {
+  padding: 0.75rem 1rem;
+  margin: 0.25rem 0;
+  background: rgba(224, 57, 59, 0.05);
+  border-radius: 8px;
+  color: var(--color-gray);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobile-dropdown-item:hover {
+  background: rgba(224, 57, 59, 0.1);
+  color: var(--color-red);
+  transform: translateX(4px);
+}
 
         .nav-link.automat {
           background: linear-gradient(135deg, var(--color-red) 0%, #c9302c 100%);
@@ -2227,8 +2280,11 @@ export default function HausschlachtereiStrassberger() {
         </nav>
 
         <button 
-          className="mobile-menu-button"
-          onClick={() => setMobileMenuOpen(true)}
+  className="mobile-menu-button"
+  onClick={() => {
+    setMobileMenuOpen(true);
+    setMobileDropdownOpen(false);
+  }}
           aria-label="Menü öffnen"
         >
           <Menu size={28} />
@@ -2775,7 +2831,10 @@ export default function HausschlachtereiStrassberger() {
             <div className="logo-tagline">Seit 1973</div>
           </div>
           <button 
-            onClick={() => setMobileMenuOpen(false)}
+  onClick={() => {
+    setMobileMenuOpen(false);
+    setMobileDropdownOpen(false);
+  }}
             style={{ 
               background: 'var(--color-bg-light)', 
               border: 'none', 
@@ -2829,19 +2888,61 @@ export default function HausschlachtereiStrassberger() {
             <Award size={20} />
             <span>Herkunft</span>
           </li>
-          <li 
-            className={`mobile-nav-link ${activeSection === 'about' ? 'active' : ''}`}
-            onClick={() => scrollToSection('about')}
-          >
-            <Users size={20} />
-            <span>Über uns</span>
-          </li>
-          <li 
-  className="mobile-nav-link"
-  onClick={() => navigateToPage('presse')}
->
-  <Award size={20} />
-  <span>Zeitungsartikel</span>
+          <li className={`mobile-nav-link mobile-dropdown ${mobileDropdownOpen ? 'open' : ''}`}>
+  <div 
+    className="mobile-dropdown-trigger"
+    onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+  >
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <Users size={20} />
+      <span>Über uns</span>
+    </div>
+    <ChevronRight size={20} className="mobile-dropdown-icon" />
+  </div>
+  
+  <div className="mobile-dropdown-content">
+    <div 
+      className="mobile-dropdown-item"
+      onClick={() => {
+        scrollToSection('about');
+        setMobileDropdownOpen(false);
+      }}
+    >
+      Über unseren Betrieb
+    </div>
+    <div style={{ 
+      height: '1px', 
+      background: '#f0f0f0', 
+      margin: '0.5rem 0' 
+    }}></div>
+    <div 
+      className="mobile-dropdown-item"
+      onClick={() => {
+        navigateToPage('presse#2020');
+        setMobileDropdownOpen(false);
+      }}
+    >
+      📰 Zeitungsartikel 2020
+    </div>
+    <div 
+      className="mobile-dropdown-item"
+      onClick={() => {
+        navigateToPage('presse#2017');
+        setMobileDropdownOpen(false);
+      }}
+    >
+      📰 Zeitungsartikel 2017
+    </div>
+    <div 
+      className="mobile-dropdown-item"
+      onClick={() => {
+        navigateToPage('presse#2010');
+        setMobileDropdownOpen(false);
+      }}
+    >
+      📰 Zeitungsartikel 2010
+    </div>
+  </div>
 </li>
         </ul>
       </div>
