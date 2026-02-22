@@ -2291,88 +2291,94 @@ export default function HausschlachtereiStrassberger() {
 {currentPage.startsWith('presse') && (
   <>
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-      <div className="header-container">
-        <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer' }}>
-          <img 
-            src="/images/logo.jpg" 
-            alt="Hausschlachterei Straßberger" 
-            style={{ 
-              height: '60px',
-              width: 'auto',
-              display: 'block',
-              objectFit: 'contain'
-            }}
-          />
-          <div className="logo-tagline" style={{ marginTop: '0.2rem' }}>Seit 1973</div>
-        </div>
+  <div className="header-container">
+    <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer' }}>
+      <img 
+        src="/images/logo.jpg" 
+        alt="Hausschlachterei Straßberger" 
+        style={{ 
+          height: '60px',
+          width: 'auto',
+          display: 'block',
+          objectFit: 'contain'
+        }}
+      />
+      <div className="logo-tagline" style={{ marginTop: '0.2rem' }}>Seit 1973</div>
+    </div>
 
-        <nav className="nav-desktop">
-          <ul className="nav-links">
-            <li 
-              className="nav-link automat"
-              onClick={() => navigateToPage('automat')}
-            >
-              🕐 24/7 Automat
-            </li>
-            <li 
-              className="nav-link"
-              onClick={() => { navigateToPage('main'); setTimeout(() => scrollToSection('hours'), 100); }}
-            >
-              Standorte
-            </li>
-            <li 
-              className="nav-link"
-              onClick={() => { navigateToPage('main'); setTimeout(() => scrollToSection('origin'), 100); }}
-            >
-              Herkunft
-            </li>
-            <li className="nav-dropdown">
-              <div className="nav-link active">
-                Über uns
-              </div>
-              <div className="dropdown-content">
-                <div 
-                  className="dropdown-item"
-                  onClick={() => { navigateToPage('main'); setTimeout(() => scrollToSection('about'), 100); }}
-                >
-                  Über unseren Betrieb
-                </div>
-                <div className="dropdown-divider"></div>
-                <div 
-                  className="dropdown-item"
-                  onClick={() => navigateToPage('presse#2020')}
-                >
-                  📰 Zeitungsartikel 2020
-                </div>
-                <div 
-                  className="dropdown-item"
-                  onClick={() => navigateToPage('presse#2017')}
-                >
-                  📰 Zeitungsartikel 2017
-                </div>
-                <div 
-                  className="dropdown-item"
-                  onClick={() => navigateToPage('presse#2010')}
-                >
-                  📰 Zeitungsartikel 2010
-                </div>
-              </div>
-            </li>
-          </ul>
-        </nav>
-
-        <button 
-  className="mobile-menu-button"
-  onClick={() => {
-    setMobileMenuOpen(true);
-    setMobileDropdownOpen(false);
-  }}
-          aria-label="Menü öffnen"
+    <nav className="nav-desktop">
+      <ul className="nav-links">
+        <li 
+          className="nav-link automat"
+          onClick={() => navigateToPage('automat')}
         >
-          <Menu size={28} />
-        </button>
-      </div>
-    </header>
+          🕐 24/7 Automat
+        </li>
+        <li 
+          className="nav-link"
+          onClick={() => {
+            navigateToPage('main');
+            setTimeout(() => scrollToSection('hours'), 100);
+          }}
+        >
+          Standorte
+        </li>
+        <li 
+          className="nav-link"
+          onClick={() => {
+            navigateToPage('main');
+            setTimeout(() => scrollToSection('origin'), 100);
+          }}
+        >
+          Herkunft
+        </li>
+        <li className="nav-dropdown">
+          <div className="nav-link active">
+            Über uns
+          </div>
+          <div className="dropdown-content">
+            <div 
+              className="dropdown-item"
+              onClick={() => {
+                navigateToPage('main');
+                setTimeout(() => scrollToSection('about'), 100);
+              }}
+            >
+              Über unseren Betrieb
+            </div>
+            <div className="dropdown-divider"></div>
+            <div 
+              className="dropdown-item"
+              onClick={() => navigateToPage('presse#2020')}
+            >
+              📰 Zeitungsartikel 2020
+            </div>
+            <div 
+              className="dropdown-item"
+              onClick={() => navigateToPage('presse#2017')}
+            >
+              📰 Zeitungsartikel 2017
+            </div>
+            <div 
+              className="dropdown-item"
+              onClick={() => navigateToPage('presse#2010')}
+            >
+              📰 Zeitungsartikel 2010
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <button 
+      className="mobile-menu-button"
+      onClick={() => setMobileMenuOpen(true)}
+      aria-label="Menü öffnen"
+    >
+      <Menu size={28} />
+    </button>
+  </div>
+</header>
 
     <div className="product-page">
       <div className="product-container">
