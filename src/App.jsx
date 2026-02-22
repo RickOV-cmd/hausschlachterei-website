@@ -362,7 +362,7 @@ export default function HausschlachtereiStrassberger() {
 .dropdown-content {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 80%;
   transform: translateX(-50%);
   background: var(--color-white);
   min-width: 220px;
