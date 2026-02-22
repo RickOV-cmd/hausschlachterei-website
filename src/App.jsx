@@ -2365,18 +2365,9 @@ export default function HausschlachtereiStrassberger() {
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
   <div className="header-container">
     <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer' }}>
-      <img 
-        src="/images/logo.jpg" 
-        alt="Hausschlachterei Straßberger" 
-        style={{ 
-          height: '60px',
-          width: 'auto',
-          display: 'block',
-          objectFit: 'contain'
-        }}
-      />
-      <div className="logo-tagline" style={{ marginTop: '0.2rem' }}>Seit 1973</div>
-    </div>
+  <div className="logo-name">Hausschlachterei Straßberger</div>
+  <div className="logo-tagline">Seit 1973</div>
+</div>
 
     <nav className="nav-desktop">
       <ul className="nav-links">
