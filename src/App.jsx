@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, MapPin, Clock, Award, Heart, Beef, Home, Users, ChevronRight } from 'lucide-react';
+import { createClient } from '@supabase/supabase-js';
+
+// Supabase Konfiguration – Werte aus Supabase Console (Settings → API)
+const SUPABASE_URL = 'https://ppksngxqvvdljlmizxgq.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwa3NuZ3hxdnZkbGpsbWl6eGdxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODY4OTYsImV4cCI6MjA5MTE2Mjg5Nn0.suf7yxrCMolmv2eobEogH9eoiFnkSemPQo1tAnX9J7M';
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const ADMIN_PASSWORD = 'strassberger2025'; // Admin-Passwort (hier änderbar)
 
 export default function HausschlachtereiStrassberger() {
   const [activeSection, setActiveSection] = useState('home');
@@ -14,6 +22,18 @@ export default function HausschlachtereiStrassberger() {
   // nachträglich hinzugefügt
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+
+  // Admin-Panel States
+  const [vacationData, setVacationData] = useState({
+    active: false,
+    start_date: '',
+    end_date: '',
+    automat_available: true,
+    custom_message: 'Wir sind nicht auf den Wochenmärkten vertreten. Wir freuen uns, Sie danach wieder begrüßen zu dürfen!'
+  });
+  const [adminAuthenticated, setAdminAuthenticated] = useState(false);
+  const [adminPasswordInput, setAdminPasswordInput] = useState('');
+  const [adminSaving, setAdminSaving] = useState(false);
   
   // Get today's day in German
   const today = new Date().toLocaleDateString('de-DE', { weekday: 'long' });
@@ -47,6 +67,29 @@ export default function HausschlachtereiStrassberger() {
       setShowMarketModal(true);
     }, 800); // Show after 800ms for better UX
     return () => clearTimeout(timer);
+  }, []);
+
+  // Admin-URL erkennen: /?admin öffnet Admin-Panel
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('admin')) {
+      setCurrentPage('admin');
+    }
+  }, []);
+
+  // Urlaubs-Konfiguration aus Supabase laden
+  useEffect(() => {
+    const loadVacation = async () => {
+      const { data, error } = await supabase
+        .from('vacation_config')
+        .select('*')
+        .eq('id', 1)
+        .single();
+      if (data && !error) {
+        setVacationData(data);
+      }
+    };
+    loadVacation();
   }, []);
 
   const scrollToSection = (sectionId) => {
@@ -165,6 +208,32 @@ export default function HausschlachtereiStrassberger() {
 
   const toggleFaq = (index) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  // Prüft ob Urlaubs-Modus gerade aktiv ist (inkl. Datumsprüfung)
+  const isVacationActive = () => {
+    if (!vacationData.active) return false;
+    if (!vacationData.start_date || !vacationData.end_date) return vacationData.active;
+    const now = new Date();
+    const start = new Date(vacationData.start_date);
+    const end = new Date(vacationData.end_date);
+    end.setHours(23, 59, 59);
+    return now >= start && now <= end;
+  };
+
+  // Formatiert Datum als DD.MM.YYYY
+  const formatDate = (dateStr) => {
+    if (!dateStr) return '';
+    const [year, month, day] = dateStr.split('-');
+    return `${day}.${month}.${year}`;
+  };
+
+  // Speichert Urlaubs-Konfiguration in Supabase
+  const saveVacation = async (updated) => {
+    setAdminSaving(true);
+    await supabase.from('vacation_config').update(updated).eq('id', 1);
+    setVacationData(updated);
+    setAdminSaving(false);
   };
 
   const markets = [
@@ -3029,6 +3098,130 @@ export default function HausschlachtereiStrassberger() {
         </ul>
       </div>
       
+      {/* Admin-Panel */}
+      {currentPage === 'admin' && (
+        <div style={{ minHeight: '100vh', background: '#f5f5f5', padding: '40px 20px', fontFamily: 'Manrope, sans-serif' }}>
+          {!adminAuthenticated ? (
+            <div style={{ maxWidth: 400, margin: '100px auto', background: '#fff', padding: 32, borderRadius: 12, boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
+              <h2 style={{ fontFamily: 'Bitter, serif', color: '#e0393b', marginBottom: 8, fontSize: 24 }}>Admin-Bereich</h2>
+              <p style={{ color: '#666', marginBottom: 24, fontSize: 14 }}>Hausschlachterei Straßberger</p>
+              <input
+                type="password"
+                placeholder="Passwort eingeben"
+                value={adminPasswordInput}
+                onChange={e => setAdminPasswordInput(e.target.value)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter' && adminPasswordInput === ADMIN_PASSWORD) setAdminAuthenticated(true);
+                }}
+                style={{ width: '100%', padding: '12px 16px', border: '2px solid #ddd', borderRadius: 8, fontSize: 16, marginBottom: 12, boxSizing: 'border-box' }}
+              />
+              <button
+                onClick={() => { if (adminPasswordInput === ADMIN_PASSWORD) setAdminAuthenticated(true); }}
+                style={{ width: '100%', padding: 12, background: '#e0393b', color: '#fff', border: 'none', borderRadius: 8, fontSize: 16, cursor: 'pointer', fontWeight: 600 }}
+              >
+                Anmelden
+              </button>
+              {adminPasswordInput && adminPasswordInput !== ADMIN_PASSWORD && (
+                <p style={{ color: '#e0393b', marginTop: 10, fontSize: 13, textAlign: 'center' }}>Falsches Passwort</p>
+              )}
+            </div>
+          ) : (
+            <div style={{ maxWidth: 600, margin: '40px auto' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32 }}>
+                <div>
+                  <h1 style={{ fontFamily: 'Bitter, serif', color: '#e0393b', margin: 0, fontSize: 28 }}>Admin-Panel</h1>
+                  <p style={{ color: '#999', margin: '4px 0 0', fontSize: 13 }}>Hausschlachterei Straßberger</p>
+                </div>
+                {adminSaving && <span style={{ color: '#999', fontSize: 13 }}>Speichern…</span>}
+              </div>
+
+              {/* Urlaubs-Modus Karte */}
+              <div style={{ background: '#fff', borderRadius: 12, padding: 28, boxShadow: '0 2px 12px rgba(0,0,0,0.08)', marginBottom: 16 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
+                  <div>
+                    <h2 style={{ fontFamily: 'Bitter, serif', margin: 0, fontSize: 20 }}>Urlaubs-Modus</h2>
+                    <p style={{ color: '#666', margin: '4px 0 0', fontSize: 13 }}>Wochenmärkte als geschlossen anzeigen</p>
+                  </div>
+                  <div
+                    onClick={() => saveVacation({ ...vacationData, active: !vacationData.active })}
+                    style={{ width: 56, height: 28, borderRadius: 14, cursor: 'pointer', background: vacationData.active ? '#e0393b' : '#ccc', position: 'relative', transition: 'background 0.3s', flexShrink: 0 }}
+                  >
+                    <div style={{ position: 'absolute', top: 3, left: vacationData.active ? 31 : 3, width: 22, height: 22, borderRadius: '50%', background: '#fff', transition: 'left 0.3s', boxShadow: '0 1px 4px rgba(0,0,0,0.2)' }} />
+                  </div>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 24 }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: 12, color: '#666', marginBottom: 6, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Urlaub von</label>
+                    <input
+                      type="date"
+                      value={vacationData.start_date || ''}
+                      onChange={e => saveVacation({ ...vacationData, start_date: e.target.value })}
+                      style={{ width: '100%', padding: '10px 12px', border: '2px solid #eee', borderRadius: 8, fontSize: 15, boxSizing: 'border-box' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: 12, color: '#666', marginBottom: 6, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Urlaub bis</label>
+                    <input
+                      type="date"
+                      value={vacationData.end_date || ''}
+                      onChange={e => saveVacation({ ...vacationData, end_date: e.target.value })}
+                      style={{ width: '100%', padding: '10px 12px', border: '2px solid #eee', borderRadius: 8, fontSize: 15, boxSizing: 'border-box' }}
+                    />
+                  </div>
+                </div>
+
+                <div style={{ marginBottom: 24 }}>
+                  <label style={{ display: 'block', fontSize: 12, color: '#666', marginBottom: 6, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Urlaubs-Nachricht (Text für Besucher)</label>
+                  <textarea
+                    value={vacationData.custom_message || ''}
+                    onChange={e => setVacationData({ ...vacationData, custom_message: e.target.value })}
+                    onBlur={e => saveVacation({ ...vacationData, custom_message: e.target.value })}
+                    rows={4}
+                    placeholder="Nachricht für Besucher eingeben..."
+                    style={{ width: '100%', padding: '10px 12px', border: '2px solid #eee', borderRadius: 8, fontSize: 15, boxSizing: 'border-box', fontFamily: 'Manrope, sans-serif', resize: 'vertical', lineHeight: 1.6 }}
+                  />
+                  <p style={{ fontSize: 12, color: '#999', margin: '4px 0 0' }}>Zeilenumbrüche werden auf der Website übernommen. Wird unter dem Datum angezeigt.</p>
+                </div>
+
+                <div style={{ borderTop: '1px solid #f0f0f0', paddingTop: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div>
+                    <h3 style={{ margin: 0, fontSize: 16 }}>24/7 Fleischautomat</h3>
+                    <p style={{ color: '#666', margin: '4px 0 0', fontSize: 13 }}>Auch während des Urlaubs verfügbar?</p>
+                  </div>
+                  <div
+                    onClick={() => saveVacation({ ...vacationData, automat_available: !vacationData.automat_available })}
+                    style={{ width: 56, height: 28, borderRadius: 14, cursor: 'pointer', background: vacationData.automat_available ? '#4caf50' : '#ccc', position: 'relative', transition: 'background 0.3s', flexShrink: 0 }}
+                  >
+                    <div style={{ position: 'absolute', top: 3, left: vacationData.automat_available ? 31 : 3, width: 22, height: 22, borderRadius: '50%', background: '#fff', transition: 'left 0.3s', boxShadow: '0 1px 4px rgba(0,0,0,0.2)' }} />
+                  </div>
+                </div>
+              </div>
+
+              {/* Status-Anzeige */}
+              <div style={{ background: vacationData.active ? '#fff3f3' : '#f0faf0', borderRadius: 12, padding: 20, border: `2px solid ${vacationData.active ? '#e0393b' : '#4caf50'}`, marginBottom: 24 }}>
+                <strong style={{ color: vacationData.active ? '#e0393b' : '#2e7d32', fontSize: 15 }}>
+                  {vacationData.active ? '🏖️ Urlaubs-Modus ist AKTIV' : '✅ Normaler Betrieb'}
+                </strong>
+                {vacationData.active && vacationData.start_date && vacationData.end_date && (
+                  <p style={{ margin: '8px 0 0', color: '#666', fontSize: 13 }}>
+                    {formatDate(vacationData.start_date)} – {formatDate(vacationData.end_date)}<br />
+                    Automat: {vacationData.automat_available ? '✅ verfügbar' : '❌ nicht verfügbar'}
+                  </p>
+                )}
+              </div>
+
+              <button
+                onClick={() => { setCurrentPage('main'); setAdminAuthenticated(false); setAdminPasswordInput(''); window.history.replaceState({}, '', '/'); }}
+                style={{ padding: '10px 20px', background: '#424242', color: '#fff', border: 'none', borderRadius: 8, cursor: 'pointer', fontSize: 14 }}
+              >
+                ← Zurück zur Website
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Render Main Page */}
       {currentPage === 'main' && (
       <>
@@ -3124,104 +3317,159 @@ export default function HausschlachtereiStrassberger() {
             </div>
             
             <div className="modal-body">
-              <div className="modal-tabs">
-                <button 
-                  className={`modal-tab ${modalTab === 'today' ? 'active' : ''}`}
-                  onClick={() => setModalTab('today')}
-                >
-                  Heute
-                </button>
-                <button 
-                  className={`modal-tab ${modalTab === 'week' ? 'active' : ''}`}
-                  onClick={() => setModalTab('week')}
-                >
-                  Diese Woche
-                </button>
-              </div>
-
-              <div className="modal-markets">
-                {getFilteredMarketsForModal().length > 0 ? (
-                  getFilteredMarketsForModal().map((day, index) => {
-                    const isToday = day.day === todayCapitalized;
-                    return (
-                      <div key={index} className={`modal-market-card ${isToday ? 'today' : ''}`}>
-                        <div className="modal-market-day">
-                          {day.day}
-                          {isToday && <span className="modal-today-badge">HEUTE</span>}
-                        </div>
-                        {day.locations.map((location, locIndex) => {
-                          const marketOpen = isMarketOpen(day.day, location.time);
-                          const marketPassed = isMarketPassed(day.day, location.time);
-                          return (
-                            <div 
-                              key={locIndex} 
-                              className={`modal-location ${marketOpen ? 'market-open' : ''} ${marketPassed ? 'market-passed' : ''}`}
-                            >
-                              <div className="modal-location-name">
-                                {location.name}
-                                {marketOpen && (
-                                  <span className="open-badge">
-                                    <span className="open-dot"></span>
-                                    JETZT GEÖFFNET
-                                  </span>
-                                )}
-                              </div>
-                              <div className="modal-location-time">
-                                <Clock size={14} />
-                                {location.time}
-                              </div>
-                              <button 
-                                className="btn btn-primary"
-                                onClick={() => {
-                                  openGoogleMaps(location.address);
-                                  setShowMarketModal(false);
-                                }}
-                                style={{ width: '100%', padding: '0.75rem' }}
-                              >
-                                <MapPin size={18} />
-                                Route planen
-                              </button>
-                            </div>
-                          );
-                        })}
+              {isVacationActive() ? (
+                <div className="modal-markets">
+                  {/* Urlaubs-Banner im Pop-up */}
+                  <div style={{ background: '#fff8e1', border: '2px solid #ffc107', borderRadius: 12, padding: '24px 28px', marginBottom: 16, textAlign: 'center' }}>
+                    <div style={{ fontSize: '2.5rem', marginBottom: 10 }}>🏖️</div>
+                    <h3 style={{ color: '#856404', margin: '0 0 10px', fontFamily: 'Bitter, serif', fontSize: '1.4rem' }}>Wir sind im Urlaub!</h3>
+                    {vacationData.start_date && vacationData.end_date && (
+                      <p style={{ color: '#856404', margin: '0 0 8px', fontSize: '1rem', fontWeight: 600 }}>
+                        {`${formatDate(vacationData.start_date)} – ${formatDate(vacationData.end_date)}`}
+                      </p>
+                    )}
+                    {vacationData.custom_message && (
+                      <p style={{ color: '#856404', margin: '0 0 8px', fontSize: '1rem', lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>
+                        {vacationData.custom_message}
+                      </p>
+                    )}
+                    <p style={{ color: '#856404', margin: 0, fontSize: '1rem', lineHeight: 1.6 }}>
+                      {vacationData.automat_available
+                        ? 'Der 24/7 Fleischautomat ist wie gewohnt für Sie da!'
+                        : 'Auch der 24/7 Fleischautomat ist in dieser Zeit nicht befüllt.'}
+                    </p>
+                  </div>
+                  {/* Automat nur anzeigen wenn verfügbar */}
+                  {vacationData.automat_available && (
+                    <div className="modal-automat-card">
+                      <div className="modal-automat-title">
+                        <Clock size={24} />
+                        24/7 Fleischautomat
                       </div>
-                    );
-                  })
-                ) : (
-                  <div className="modal-empty">
-                    <div className="modal-empty-icon">
-                      <Clock size={32} />
+                      <div className="modal-automat-text">
+                        Jederzeit verfügbar auf dem Straßberger's Hof in Buchholz – Neue Straße 2
+                      </div>
+                      <button
+                        className="btn btn-white"
+                        onClick={() => {
+                          openGoogleMaps('Neue Str. 2, 31710 Buchholz');
+                          setShowMarketModal(false);
+                        }}
+                        style={{ width: '100%' }}
+                      >
+                        <MapPin size={18} />
+                        Route zum Automaten
+                      </button>
                     </div>
-                    <div className="modal-empty-title">Heute keine Märkte</div>
-                    <div className="modal-empty-text">
-                      Heute haben wir keine Wochenmärkte geöffnet.<br />
-                      Besuchen Sie uns an einem anderen Tag!
+                  )}
+                  {!vacationData.automat_available && (
+                    <div style={{ textAlign: 'center', color: '#666', fontSize: 14, padding: '12px 0' }}>
+                      Auch der 24/7 Fleischautomat ist in dieser Zeit nicht befüllt.
                     </div>
-                  </div>
-                )}
-
-                {/* Always show 24/7 Automat in modal */}
-                <div className="modal-automat-card">
-                  <div className="modal-automat-title">
-                    <Clock size={24} />
-                    24/7 Fleischautomat
-                  </div>
-                  <div className="modal-automat-text">
-                    Jederzeit verfügbar auf dem Straßberger's Hof in Buchholz – Neue Straße 2
-                  </div>
-                  <button 
-                    className="btn btn-white"
-                    onClick={() => {
-                      openGoogleMaps('Neue Str. 2, 31710 Buchholz');
-                      setShowMarketModal(false);
-                    }}
-                    style={{ width: '100%' }}
-                  >
-                    <MapPin size={18} />
-                    Route zum Automaten
-                  </button>
+                  )}
                 </div>
-              </div>
+              ) : (
+                <>
+                  <div className="modal-tabs">
+                    <button
+                      className={`modal-tab ${modalTab === 'today' ? 'active' : ''}`}
+                      onClick={() => setModalTab('today')}
+                    >
+                      Heute
+                    </button>
+                    <button
+                      className={`modal-tab ${modalTab === 'week' ? 'active' : ''}`}
+                      onClick={() => setModalTab('week')}
+                    >
+                      Diese Woche
+                    </button>
+                  </div>
+
+                  <div className="modal-markets">
+                    {getFilteredMarketsForModal().length > 0 ? (
+                      getFilteredMarketsForModal().map((day, index) => {
+                        const isToday = day.day === todayCapitalized;
+                        return (
+                          <div key={index} className={`modal-market-card ${isToday ? 'today' : ''}`}>
+                            <div className="modal-market-day">
+                              {day.day}
+                              {isToday && <span className="modal-today-badge">HEUTE</span>}
+                            </div>
+                            {day.locations.map((location, locIndex) => {
+                              const marketOpen = isMarketOpen(day.day, location.time);
+                              const marketPassed = isMarketPassed(day.day, location.time);
+                              return (
+                                <div
+                                  key={locIndex}
+                                  className={`modal-location ${marketOpen ? 'market-open' : ''} ${marketPassed ? 'market-passed' : ''}`}
+                                >
+                                  <div className="modal-location-name">
+                                    {location.name}
+                                    {marketOpen && (
+                                      <span className="open-badge">
+                                        <span className="open-dot"></span>
+                                        JETZT GEÖFFNET
+                                      </span>
+                                    )}
+                                  </div>
+                                  <div className="modal-location-time">
+                                    <Clock size={14} />
+                                    {location.time}
+                                  </div>
+                                  <button
+                                    className="btn btn-primary"
+                                    onClick={() => {
+                                      openGoogleMaps(location.address);
+                                      setShowMarketModal(false);
+                                    }}
+                                    style={{ width: '100%', padding: '0.75rem' }}
+                                  >
+                                    <MapPin size={18} />
+                                    Route planen
+                                  </button>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <div className="modal-empty">
+                        <div className="modal-empty-icon">
+                          <Clock size={32} />
+                        </div>
+                        <div className="modal-empty-title">Heute keine Märkte</div>
+                        <div className="modal-empty-text">
+                          Heute haben wir keine Wochenmärkte geöffnet.<br />
+                          Besuchen Sie uns an einem anderen Tag!
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Always show 24/7 Automat in modal */}
+                    <div className="modal-automat-card">
+                      <div className="modal-automat-title">
+                        <Clock size={24} />
+                        24/7 Fleischautomat
+                      </div>
+                      <div className="modal-automat-text">
+                        Jederzeit verfügbar auf dem Straßberger's Hof in Buchholz – Neue Straße 2
+                      </div>
+                      <button
+                        className="btn btn-white"
+                        onClick={() => {
+                          openGoogleMaps('Neue Str. 2, 31710 Buchholz');
+                          setShowMarketModal(false);
+                        }}
+                        style={{ width: '100%' }}
+                      >
+                        <MapPin size={18} />
+                        Route zum Automaten
+                      </button>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -3235,15 +3483,37 @@ export default function HausschlachtereiStrassberger() {
             Frisches Fleisch und handgemachte Wurstwaren – direkt aus unserem Familienbetrieb in Buchholz. Seit 1973.
           </p>
 
+          {isVacationActive() && (
+            <div style={{ background: '#fff8e1', border: '2px solid #ffc107', borderRadius: 12, padding: '24px 28px', marginBottom: 24, textAlign: 'center', maxWidth: 520, margin: '0 auto 24px' }}>
+              <div style={{ fontSize: '2.5rem', marginBottom: 10 }}>🏖️</div>
+              <h3 style={{ color: '#856404', margin: '0 0 10px', fontFamily: 'Bitter, serif', fontSize: '1.4rem' }}>Wir sind im Urlaub!</h3>
+              {vacationData.start_date && vacationData.end_date && (
+                <p style={{ color: '#856404', margin: '0 0 8px', fontSize: '1rem', fontWeight: 600 }}>
+                  {`${formatDate(vacationData.start_date)} – ${formatDate(vacationData.end_date)}`}
+                </p>
+              )}
+              {vacationData.custom_message && (
+                <p style={{ color: '#856404', margin: '0 0 8px', fontSize: '1rem', lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>
+                  {vacationData.custom_message}
+                </p>
+              )}
+              <p style={{ color: '#856404', margin: 0, fontSize: '1rem', lineHeight: 1.6 }}>
+                {vacationData.automat_available
+                  ? 'Der 24/7 Fleischautomat ist wie gewohnt für Sie da!'
+                  : 'Auch der 24/7 Fleischautomat ist in dieser Zeit nicht befüllt.'}
+              </p>
+            </div>
+          )}
+
           <div className="hero-buttons">
-            <button 
+            <button
               className="btn btn-primary"
               onClick={() => scrollToSection('hours')}
             >
               Öffnungszeiten & Standorte ansehen
               <ChevronRight size={20} />
             </button>
-            <button 
+            <button
               className="btn btn-secondary"
               onClick={() => openGoogleMaps('Neue Str. 2, 31710 Buchholz')}
             >
@@ -3426,82 +3696,140 @@ export default function HausschlachtereiStrassberger() {
           Besuchen Sie uns auf einem unserer Wochenmärkte oder nutzen Sie unseren 24/7 Fleischautomaten für spontanen Einkauf.
         </p>
 
-        {/* Tabs */}
-        <div className="market-tabs">
-          <button 
-            className={`market-tab ${marketTab === 'today' ? 'active' : ''}`}
-            onClick={() => setMarketTab('today')}
-          >
-            Heute
-          </button>
-          <button 
-            className={`market-tab ${marketTab === 'week' ? 'active' : ''}`}
-            onClick={() => setMarketTab('week')}
-          >
-            Diese Woche
-          </button>
-        </div>
+        {/* Urlaubs-Banner – nur sichtbar wenn Urlaubs-Modus aktiv */}
+        {isVacationActive() && (
+          <div style={{ background: '#fff8e1', border: '2px solid #ffc107', borderRadius: 12, padding: '24px 28px', marginBottom: 24, textAlign: 'center' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: 10 }}>🏖️</div>
+            <h3 style={{ color: '#856404', margin: '0 0 10px', fontFamily: 'Bitter, serif', fontSize: '1.4rem' }}>Wir sind im Urlaub!</h3>
+            {vacationData.start_date && vacationData.end_date && (
+              <p style={{ color: '#856404', margin: '0 0 8px', fontSize: '1rem', fontWeight: 600 }}>
+                {`${formatDate(vacationData.start_date)} – ${formatDate(vacationData.end_date)}`}
+              </p>
+            )}
+            {vacationData.custom_message && (
+              <p style={{ color: '#856404', margin: '0 0 8px', fontSize: '1rem', lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>
+                {vacationData.custom_message}
+              </p>
+            )}
+            <p style={{ color: '#856404', margin: 0, fontSize: '1rem', lineHeight: 1.6 }}>
+              {vacationData.automat_available
+                ? 'Der 24/7 Fleischautomat ist wie gewohnt für Sie da!'
+                : 'Auch der 24/7 Fleischautomat ist in dieser Zeit nicht befüllt.'}
+            </p>
+          </div>
+        )}
 
-        <div className="hours-grid">
-          {getFilteredMarkets().length > 0 ? (
-            getFilteredMarkets().map((day, index) => {
-              const isToday = day.day === todayCapitalized;
-              return (
-                <div key={index} className={`day-card ${isToday ? 'today' : ''}`}>
+        {/* Tabs und Marktliste – nur wenn kein Urlaub */}
+        {!isVacationActive() && (
+          <>
+            {/* Tabs */}
+            <div className="market-tabs">
+              <button
+                className={`market-tab ${marketTab === 'today' ? 'active' : ''}`}
+                onClick={() => setMarketTab('today')}
+              >
+                Heute
+              </button>
+              <button
+                className={`market-tab ${marketTab === 'week' ? 'active' : ''}`}
+                onClick={() => setMarketTab('week')}
+              >
+                Diese Woche
+              </button>
+            </div>
+
+            <div className="hours-grid">
+              {getFilteredMarkets().length > 0 ? (
+                getFilteredMarkets().map((day, index) => {
+                  const isToday = day.day === todayCapitalized;
+                  return (
+                    <div key={index} className={`day-card ${isToday ? 'today' : ''}`}>
+                      <div className="day-header">
+                        <span>{day.day}</span>
+                        {isToday && <span className="today-badge">HEUTE</span>}
+                      </div>
+                      <div className="day-locations">
+                        {day.locations.map((location, locIndex) => {
+                          const marketOpen = isMarketOpen(day.day, location.time);
+                          const marketPassed = isMarketPassed(day.day, location.time);
+                          return (
+                            <div
+                              key={locIndex}
+                              className={`location-item ${marketOpen ? 'market-open' : ''} ${marketPassed ? 'market-passed' : ''}`}
+                            >
+                              <div className="location-name">
+                                {location.name}
+                                {marketOpen && (
+                                  <span className="open-badge">
+                                    <span className="open-dot"></span>
+                                    JETZT GEÖFFNET
+                                  </span>
+                                )}
+                              </div>
+                              <div className="location-time">
+                                <Clock size={16} />
+                                {location.time}
+                              </div>
+                              <button
+                                className="btn btn-map"
+                                onClick={() => openGoogleMaps(location.address)}
+                              >
+                                <MapPin size={16} />
+                                Route planen
+                              </button>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                <div style={{
+                  gridColumn: '1 / -1',
+                  textAlign: 'center',
+                  padding: '3rem',
+                  color: '#666'
+                }}>
+                  <p style={{ fontSize: '1.1rem' }}>Heute haben wir keine Marktstände geöffnet.</p>
+                  <p style={{ marginTop: '0.5rem' }}>Besuchen Sie uns an einem anderen Tag oder nutzen Sie unseren 24/7 Automaten!</p>
+                </div>
+              )}
+
+              {/* 24/7 Automat Card */}
+              {(marketTab === 'week' || marketTab === 'today') && (
+                <div className="day-card" style={{ gridColumn: 'span 1' }}>
                   <div className="day-header">
-                    <span>{day.day}</span>
-                    {isToday && <span className="today-badge">HEUTE</span>}
+                    <span>24/7 Fleischautomat</span>
                   </div>
                   <div className="day-locations">
-                    {day.locations.map((location, locIndex) => {
-                      const marketOpen = isMarketOpen(day.day, location.time);
-                      const marketPassed = isMarketPassed(day.day, location.time);
-                      return (
-                        <div 
-                          key={locIndex} 
-                          className={`location-item ${marketOpen ? 'market-open' : ''} ${marketPassed ? 'market-passed' : ''}`}
-                        >
-                          <div className="location-name">
-                            {location.name}
-                            {marketOpen && (
-                              <span className="open-badge">
-                                <span className="open-dot"></span>
-                                JETZT GEÖFFNET
-                              </span>
-                            )}
-                          </div>
-                          <div className="location-time">
-                            <Clock size={16} />
-                            {location.time}
-                          </div>
-                          <button 
-                            className="btn btn-map"
-                            onClick={() => openGoogleMaps(location.address)}
-                          >
-                            <MapPin size={16} />
-                            Route planen
-                          </button>
-                        </div>
-                      );
-                    })}
+                    <div className="location-item">
+                      <div className="location-name">Neue Str. 2, 31710 Buchholz</div>
+                      <div className="location-time">
+                        <MapPin size={16} />
+                        Neue Straße 2
+                      </div>
+                      <p style={{ fontSize: '0.9rem', color: '#666', marginBottom: '1rem', lineHeight: '1.6' }}>
+                        Unser Automat bietet Ihnen jederzeit frisches Grillfleisch, Würstchen, Suppen, Salate und vieles mehr – perfekt für spontanen Genuss rund um die Uhr.
+                      </p>
+                      <button
+                        className="btn btn-map"
+                        onClick={() => openGoogleMaps('Neue Str. 2, 31710 Buchholz')}
+                      >
+                        <MapPin size={16} />
+                        Route planen
+                      </button>
+                    </div>
                   </div>
                 </div>
-              );
-            })
-          ) : (
-            <div style={{ 
-              gridColumn: '1 / -1', 
-              textAlign: 'center', 
-              padding: '3rem', 
-              color: '#666' 
-            }}>
-              <p style={{ fontSize: '1.1rem' }}>Heute haben wir keine Marktstände geöffnet.</p>
-              <p style={{ marginTop: '0.5rem' }}>Besuchen Sie uns an einem anderen Tag oder nutzen Sie unseren 24/7 Automaten!</p>
+              )}
             </div>
-          )}
+          </>
+        )}
 
-          {/* 24/7 Automat Card - always show when tab is 'week' or 'today' */}
-          {(marketTab === 'week' || marketTab === 'today') && (
+        {/* 24/7 Automat während Urlaub – nur anzeigen wenn Automat noch verfügbar */}
+        {isVacationActive() && vacationData.automat_available && (
+          <div className="hours-grid" style={{ marginTop: 0 }}>
             <div className="day-card" style={{ gridColumn: 'span 1' }}>
               <div className="day-header">
                 <span>24/7 Fleischautomat</span>
@@ -3516,7 +3844,7 @@ export default function HausschlachtereiStrassberger() {
                   <p style={{ fontSize: '0.9rem', color: '#666', marginBottom: '1rem', lineHeight: '1.6' }}>
                     Unser Automat bietet Ihnen jederzeit frisches Grillfleisch, Würstchen, Suppen, Salate und vieles mehr – perfekt für spontanen Genuss rund um die Uhr.
                   </p>
-                  <button 
+                  <button
                     className="btn btn-map"
                     onClick={() => openGoogleMaps('Neue Str. 2, 31710 Buchholz')}
                   >
@@ -3526,8 +3854,8 @@ export default function HausschlachtereiStrassberger() {
                 </div>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </section>
 
       {/* Origin Section */}
