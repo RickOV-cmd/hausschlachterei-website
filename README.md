@@ -41,7 +41,3 @@ Die Website ist optimiert für Vercel:
 1. Repository auf GitHub pushen
 2. Mit Vercel verbinden
 3. Automatisch deployen
-
-## 📧 Support
-
-Bei Fragen zur Website: Claude AI
