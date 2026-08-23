@@ -261,13 +261,13 @@ export default function HausschlachtereiStrassberger() {
       day: 'Freitag',
       locations: [
         { name: 'Marktplatz, Obernkirchen', time: '07:30 bis 13:00', address: 'Marktpl. 5-6, 31683 Obernkirchen' },
-        { name: 'Ovesiek\'s Hof, Meinsen', time: '14:00 bis 18:00', address: 'Meinser Str. 23, 31675 Bückeburg' }
+        { name: 'Ovesiek\'s Hof, Meinsen', time: '14:00 bis 17:00', address: 'Meinser Str. 23, 31675 Bückeburg' }
       ]
     },
     {
       day: 'Samstag',
       locations: [
-        { name: 'Ovesiek\'s Hof, Meinsen', time: '07:30 bis 10:00', address: 'Meinser Str. 23, 31675 Bückeburg' },
+        { name: 'Bäckerei Scholz, Deckbergen', time: '06:00 bis 10:00', address: 'Alte Heerstraße 19, 31737 Rinteln-Deckbergen' },
         { name: 'Straßberger\'s Hof, Buchholz', time: '10:30 bis 11:30', address: 'Neue Str. 2, 31710 Buchholz' }
       ]
     }
@@ -280,7 +280,10 @@ export default function HausschlachtereiStrassberger() {
     },
     {
       question: 'Woher stammen die Schweine?',
-      answer: 'Aus Gelldorf von Hof Pohl & Hof Eggelmann, Ferkelzucht KLEPO Agrar GbR.'
+      answer: 'Qualität beginnt mit besten Fleisch.
+Für unsere Fleisch und Wurstspezialitäten beziehen wir unser Fleisch von einem zuverlässigen, regionalen Partner und der Fleischergilde, die für hohe Qualitätssdandarts und sorgfältige, ausgewählte Rohstoffe stehen.
+In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, Erfahrung und viel Sorgfalt zu hochwertigen Fleisch und Wurstprodukten. 
+  So verbinden wir traditionelle Handwerkskunst mit erstklassiger Qualität für ehrlichen Geschmack, auf den man sich verlassen kann.'
     },
     {
       question: 'Gibt es Bestellungen?',
