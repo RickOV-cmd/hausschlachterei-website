@@ -3589,12 +3589,12 @@ In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, E
           <div className="market-teaser">
             <div className="market-day">Freitag</div>
             <div className="market-location">Marktplatz, Obernkirchen • 07:30 bis 13:00</div>
-            <div className="market-location">Ovesiek's Hof, Meinsen • 14:00 bis 18:00</div>
+            <div className="market-location">Ovesiek's Hof, Meinsen • 14:00 bis 17:00</div>
           </div>
 
           <div className="market-teaser">
             <div className="market-day">Samstag</div>
-            <div className="market-location">Ovesiek's Hof, Meinsen • 07:00 bis 10:00</div>
+            <div className="market-location">Bäckerei Scholz, Deckbergen • 06:00 bis 10:00</div>
             <div className="market-location">Straßberger's Hof, Buchholz • 10:30 bis 11:30</div>
           </div>
 
@@ -3637,10 +3637,14 @@ In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, E
         <div className="content-section">
           <h3 className="content-title">Tradition & Familienhandwerk seit 1973</h3>
           <p className="content-text">
-            Seit über 50 Jahren steht die Hausschlachterei Straßberger für echte Handwerkskunst und höchste Qualität. Als Familienbetrieb wissen wir: Gutes Fleisch braucht Zeit, Sorgfalt und die richtigen Partner. Unsere Tiere kommen von einem regionalen Hof aus Schaumburg, die wir persönlich kennen. Die Verarbeitung erfolgt in unserem eigenen Betrieb – von der Schlachtung bis zur fertigen Wurst.
+            Seit über 50 Jahren steht die Hausschlachterei Straßberger für echte Handwerkskunst und höchste Qualität. 
+            Als Familienbetrieb wissen wir: Gutes Fleisch braucht Zeit, Sorgfalt und die richtigen Partner. 
+            Unsere Tiere kommen aus der Region. Die Verarbeitung erfolgt in unserem eigenen Betrieb – von der Zerlegung bis zum fertigen Produkt.
           </p>
           <p className="content-text">
-            Diese kurzen Wege garantieren nicht nur Frische und Geschmack, sondern auch Transparenz. Sie können sich darauf verlassen, dass jedes unserer Produkte mit Respekt vor Tier und Natur hergestellt wird. Tradition bedeutet für uns nicht Stillstand, sondern bewährte Rezepturen mit modernem Qualitätsbewusstsein zu vereinen.
+            Diese kurzen Wege garantieren nicht nur Frische und Geschmack, sondern auch Transparenz. 
+            Sie können sich darauf verlassen, dass jedes unserer Produkte mit Respekt vor Tier und Natur hergestellt wird.
+            Tradition bedeutet für uns nicht Stillstand, sondern bewährte Rezepturen mit modernem Qualitätsbewusstsein zu vereinen.
           </p>
           <button 
             className="btn btn-primary"
@@ -3654,12 +3658,11 @@ In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, E
       {/* Origin Teaser */}
       <section>
         <div className="content-section">
-          <h3 className="content-title">Herkunft, die wir kennen</h3>
+          <h3 className="content-title">Qualität beginnt mit bestem Fleisch</h3>
           <p className="content-text">
-            Unsere Schweine stammen von der KLEPO Agrar GbR in Gelldorf (Schaumburg). Die sehr kurzen Transportwege bedeuten weniger Stress für die Tiere und bessere Fleischqualität für Sie. Durch die Fütterung mit selbst angebautem Getreide und einer angepassten Aufzucht erreichen wir ein langsameres Wachstum – das Fleisch wird dadurch fester und aromatischer.
-          </p>
-          <p className="content-text">
-            Die stressarme Schlachtung erfolgt in unserem eigenen Betrieb nach einer Ruhephase. So können wir jeden Schritt selbst kontrollieren und garantieren lückenlose Herkunft vom Hof bis zum fertigen Produkt.
+            Qualität beginnt mit besten Fleisch.
+Für unsere Fleisch und Wurstspezialitäten beziehen wir unser Fleisch von einem zuverlässigen, regionalen Partner und der Fleischergilde, die für hohe Qualitätssdandarts und sorgfältige, ausgewählte Rohstoffe stehen.
+In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, Erfahrung und viel Sorgfalt zu hochwertigen Fleisch und Wurstprodukten. So verbinden wir traditionelle Handwerkskunst mit erstklassiger Qualität für ehrlichen Geschmack, auf den man sich verlassen kann.
           </p>
           <button 
             className="btn btn-primary"
