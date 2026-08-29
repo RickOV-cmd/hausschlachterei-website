@@ -2170,7 +2170,7 @@ In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, E
           <header className={`header ${scrolled ? 'scrolled' : ''}`}>
   <div className="header-container">
     <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer' }}>
-      <div className="logo-name">Hausschlachterei Straßberger</div>
+      <div className="logo-name">Fleischerei Straßberger</div>
       <div className="logo-tagline">Seit 1973</div>
     </div>
 
@@ -2261,7 +2261,7 @@ In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, E
               <div className="legal-section">
                 <h2 className="legal-section-title">Angaben zum Unternehmen</h2>
                 <p className="legal-text">
-                  <strong>Hausschlachterei Straßberger</strong><br />
+                  <strong>Fleischerei Straßberger</strong><br />
                   Neue Straße 2<br />
                   31710 Buchholz<br />
                   Deutschland
@@ -2330,7 +2330,7 @@ In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, E
           <header className={`header ${scrolled ? 'scrolled' : ''}`}>
             <div className="header-container">
               <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer' }}>
-                <div className="logo-name">Hausschlachterei Straßberger</div>
+                <div className="logo-name">Fleischerei Straßberger</div>
                 <div className="logo-tagline">Seit 1973</div>
               </div>
             </div>
@@ -2437,7 +2437,7 @@ In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, E
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
   <div className="header-container">
     <div className="logo" onClick={() => navigateToPage('main')} style={{ cursor: 'pointer' }}>
-  <div className="logo-name">Hausschlachterei Straßberger</div>
+  <div className="logo-name">Fleischerei Straßberger</div>
   <div className="logo-tagline">Seit 1973</div>
 </div>
 
@@ -3107,7 +3107,7 @@ In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, E
           {!adminAuthenticated ? (
             <div style={{ maxWidth: 400, margin: '100px auto', background: '#fff', padding: 32, borderRadius: 12, boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
               <h2 style={{ fontFamily: 'Bitter, serif', color: '#e0393b', marginBottom: 8, fontSize: 24 }}>Admin-Bereich</h2>
-              <p style={{ color: '#666', marginBottom: 24, fontSize: 14 }}>Hausschlachterei Straßberger</p>
+              <p style={{ color: '#666', marginBottom: 24, fontSize: 14 }}>Fleischerei Straßberger</p>
               <input
                 type="password"
                 placeholder="Passwort eingeben"
@@ -3133,7 +3133,7 @@ In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, E
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32 }}>
                 <div>
                   <h1 style={{ fontFamily: 'Bitter, serif', color: '#e0393b', margin: 0, fontSize: 28 }}>Admin-Panel</h1>
-                  <p style={{ color: '#999', margin: '4px 0 0', fontSize: 13 }}>Hausschlachterei Straßberger</p>
+                  <p style={{ color: '#999', margin: '4px 0 0', fontSize: 13 }}>Fleischerei Straßberger</p>
                 </div>
                 {adminSaving && <span style={{ color: '#999', fontSize: 13 }}>Speichern…</span>}
               </div>
@@ -3232,7 +3232,7 @@ In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, E
       <header className={`header ${scrolled ? 'scrolled' : ''}`}>
         <div className="header-container">
           <div className="logo" onClick={() => scrollToSection('home')} style={{ cursor: 'pointer' }}>
-            <div className="logo-name">Hausschlachterei Straßberger</div>
+            <div className="logo-name">Fleischerei Straßberger</div>
             <div className="logo-tagline">Seit 1973</div>
           </div>
 
@@ -3637,7 +3637,7 @@ In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, E
         <div className="content-section">
           <h3 className="content-title">Tradition & Familienhandwerk seit 1973</h3>
           <p className="content-text">
-            Seit über 50 Jahren steht die Hausschlachterei Straßberger für echte Handwerkskunst und höchste Qualität. 
+            Seit über 50 Jahren steht die Fleischerei Straßberger für echte Handwerkskunst und höchste Qualität. 
             Als Familienbetrieb wissen wir: Gutes Fleisch braucht Zeit, Sorgfalt und die richtigen Partner. 
             Unsere Tiere kommen aus der Region. Die Verarbeitung erfolgt in unserem eigenen Betrieb – von der Zerlegung bis zum fertigen Produkt.
           </p>
@@ -3926,7 +3926,7 @@ In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, E
             <div className="about-item">
               <div className="about-item-title">Familienbetrieb seit 1973</div>
               <div className="about-item-text">
-                Über drei Generationen hinweg pflegen wir das Handwerk der Hausschlachterei. Was als kleiner Betrieb begann, ist heute eine feste Größe in der Region Schaumburg – immer mit dem Anspruch, Tradition und Qualität zu vereinen.
+                Über drei Generationen hinweg pflegen wir das Handwerk der Fleischerei. Was als kleiner Betrieb begann, ist heute eine feste Größe in der Region Schaumburg – immer mit dem Anspruch, Tradition und Qualität zu vereinen.
               </div>
             </div>
 
@@ -3957,7 +3957,7 @@ In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, E
       {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
-          <div className="footer-logo">Hausschlachterei Straßberger</div>
+          <div className="footer-logo">Fleischerei Straßberger</div>
           <div className="footer-tagline">WISSEN, WO'S HERKOMMT – SEIT 1973</div>
           
           <ul className="footer-links">
@@ -3971,7 +3971,7 @@ In unserer Fleischerei verarbeiten wir das Fleisch mit handwerklichen Können, E
           </ul>
 
           <div className="footer-copyright">
-            © 2025 Hausschlachterei Straßberger. Alle Rechte vorbehalten.
+            © 2026 Fleischerei Straßberger. Alle Rechte vorbehalten.
           </div>
         </div>
       </footer>
